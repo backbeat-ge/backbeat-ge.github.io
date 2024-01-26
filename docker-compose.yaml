@@ -5,6 +5,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    command: sh -c "npm install && npm run dev -- --host"
+    command: sh -c "npm install && npm run dev"
     ports:
+      - 4001:4001
       - 4321:4321
