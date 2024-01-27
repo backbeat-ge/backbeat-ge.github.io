@@ -5,14 +5,22 @@ const postsCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    posted: z.date(),
-    // description: z.string(),
-    // author: z.string(),
-    // image: z.object({
-    //   url: z.string(),
-    //   alt: z.string(),
-    // }),
-    // tags: z.array(z.string()),
+    date: z.date(),
+  }),
+});
+const eventCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    place: z.string(),
+    date: z.date(),
+  }),
+});
+const placeCollection = defineCollection({
+  type: "data",
+  schema: z.object({
+    name: z.string(),
+    address: z.string(),
   }),
 });
 // Export a single `collections` object to register your collection(s)

@@ -43,8 +43,8 @@ export default defineConfig({
           },
           {
             type: "datetime",
-            name: "posted",
-            label: "Date Posted",
+            name: "date",
+            label: "Post date",
             required: true,
           },
           {
@@ -52,6 +52,71 @@ export default defineConfig({
             name: "body",
             label: "Body",
             isBody: true,
+          },
+        ],
+      },
+      {
+        name: "event",
+        label: "Events",
+        path: "src/content/events",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "reference",
+            collections: ["place"],
+            name: "place",
+            label: "Place",
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date",
+            required: true,
+            ui: {
+              utc: true,
+            },
+          },
+          {
+            type: "boolean",
+            name: "published",
+            label: "Published",
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+      },
+      {
+        name: "place",
+        label: "Places",
+        path: "src/content/places",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "address",
+            label: "Address",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
           },
         ],
       },
