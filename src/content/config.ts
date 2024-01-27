@@ -6,6 +6,7 @@ const postsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
+    published: z.boolean(),
   }),
 });
 const eventCollection = defineCollection({
@@ -14,6 +15,7 @@ const eventCollection = defineCollection({
     title: z.string(),
     place: z.string(),
     date: z.date(),
+    published: z.boolean(),
   }),
 });
 const placeCollection = defineCollection({
