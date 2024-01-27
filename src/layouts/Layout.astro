@@ -20,6 +20,7 @@ const { title } = Astro.props;
     <slot />
   </body>
 </html>
+
 <style is:global>
   :root {
     --accent: 136, 58, 234;
@@ -47,5 +48,8 @@ const { title } = Astro.props;
       Bitstream Vera Sans Mono,
       Courier New,
       monospace;
+  }
+  body {
+    color: white;
   }
 </style>
