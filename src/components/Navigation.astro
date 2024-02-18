@@ -14,24 +14,38 @@ import logoImage from "../images/logo.png";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
+
+const homeUrl = getRelativeLocaleUrl(lang, "");
+const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
 ---
 
-<header class="lg:flex p-5 gap-5">
+<header class="lg:flex p-2 gap-5 bg-sky-50">
   <Astronav>
     <div class="flex w-full justify-between">
-      <a href={getRelativeLocaleUrl(lang, "")} class="p-2">
-        <Image src={logoImage} alt="Our logo" class="h-12 w-auto" />
-      </a>
-      <div class="block lg:hidden">
-        <MenuIcon class="w-4 h-4 text-gray-800" />
+      <div class="block flex items-center">
+        <a href={homeUrl}>
+          <Image src={logoImage} alt="Our logo" class="h-16 w-auto" />
+        </a>
+        <div class="text-xs ml-4">
+          Danse<br />Musique<br />Communauté<br />Culture Swing à Genève
+        </div>
+      </div>
+      <div class="block flex items-center lg:hidden">
+        <MenuIcon class="w-6 h-6 text-stone-800 hover:text-sky-800" />
       </div>
     </div>
     <MenuItems class="hidden lg:flex">
-      <ul class="flex flex-col lg:flex-row lg:gap-5">
-        <li><a href={getRelativeLocaleUrl(lang, "")}>{t("nav.home")}</a></li>
+      <ul
+        class="flex flex-col p-3 gap-1 lg:flex-row lg:gap-6 lg:items-center lg:pr-6"
+      >
+        <li>
+          <a class="text-stone-800 hover:text-sky-800" href={homeUrl}
+            >{t("nav.home")}</a
+          >
+        </li>
         <li>
           <Dropdown class="group">
-            <button class="flex items-center">
+            <button class="flex items-center text-stone-800 hover:text-sky-800">
               <span>{t("nav.association")}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,11 +62,16 @@ const t = useTranslations(lang);
               </svg>
             </button>
             <DropdownItems class="relative">
-              <div class="absolute top-0">
-                <ul>
-                  <li>
-                    <a href={getRelativeLocaleUrl(lang, "association/charte")}
-                      >{t("nav.charte")}</a
+              <div
+                class="w-full lg:absolute lg:w-48 z-10 lg:left-0 origin-top-left"
+              >
+                <ul
+                  class="lg:py-3 lg:bg-sky-50 lg:rounded-md lg:shadow lg:border"
+                >
+                  <li class="px-3">
+                    <a
+                      class="py-1 text-stone-800 hover:text-sky-800"
+                      href={charteUrl}>{t("nav.charte")}</a
                     >
                   </li>
                 </ul>
@@ -61,10 +80,16 @@ const t = useTranslations(lang);
           </Dropdown>
         </li>
         <li>
-          <a href={getRelativeLocaleUrl(lang, "events")}>Cours</a>
+          <a
+            class="text-stone-800 hover:text-sky-800"
+            href={getRelativeLocaleUrl(lang, "events")}>Cours</a
+          >
         </li>
         <li>
-          <a href={getRelativeLocaleUrl(lang, "events")}>{t("nav.events")}</a>
+          <a
+            class="text-stone-800 hover:text-sky-800"
+            href={getRelativeLocaleUrl(lang, "events")}>{t("nav.events")}</a
+          >
         </li>
       </ul>
     </MenuItems>
