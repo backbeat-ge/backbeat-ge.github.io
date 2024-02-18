@@ -17,7 +17,9 @@ export default defineConfig({
   build: {
     outputFolder: "admin",
     publicFolder: "public",
-    basePath: process.env.TINA_BASE_PATH || "",
+    basePath: process.env.TINA_BASE_PATH
+      ? `/${process.env.TINA_BASE_PATH}`
+      : undefined,
     host: true,
   },
   media: {
