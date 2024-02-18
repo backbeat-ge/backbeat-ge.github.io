@@ -1,8 +1,8 @@
 ---
+import { getCollection } from "astro:content";
 import { format } from "date-fns";
 import Layout from "../../layouts/Layout.astro";
-
-import { getCollection } from "astro:content";
+import { generateRelativeUrl } from "../../utils";
 
 const lang = "fr";
 const allPosts = await getCollection("posts", ({ id }) => id.startsWith(lang));
@@ -19,24 +19,30 @@ const allEvents = await getCollection(
     <h1 class="text-gradient">Publications</h1>
     <ul>
       {
-        allPosts.map((post) => (
-          <li>
-            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
-          </li>
-        ))
+        allPosts.map((post) => {
+          const postUrl = generateRelativeUrl(`/posts/${post.slug}/`);
+          return (
+            <li>
+              <a href={postUrl}>{post.data.title}</a>
+            </li>
+          );
+        })
       }
     </ul>
     <h1 class="text-gradient">Événements</h1>
     <ul>
       {
-        allEvents.map((event) => (
-          <li>
-            <a href={`/events/${event.slug}/`}>
-              {format(new Date(event.data.date), "dd.MM.yyyy")}
-              {event.data.title}
-            </a>
-          </li>
-        ))
+        allEvents.map((event) => {
+          const eventUrl = generateRelativeUrl(`/events/${event.slug}/`);
+          return (
+            <li>
+              <a href={eventUrl}>
+                {format(new Date(event.data.date), "dd.MM.yyyy")}
+                {event.data.title}
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
   </main>
