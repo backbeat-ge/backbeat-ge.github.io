@@ -1,5 +1,6 @@
 ---
 import { format } from "date-fns";
+import { generateRelativeUrl } from "../utils";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
@@ -8,5 +9,8 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
   <p>Post date: {format(new Date(frontmatter.date), "dd.MM.yyyy")}</p>
   <slot />
-  <img src={frontmatter.imageSrc} alt={frontmatter.title} />
+  <img
+    src={generateRelativeUrl(frontmatter.imageSrc)}
+    alt={frontmatter.title}
+  />
 </Layout>
