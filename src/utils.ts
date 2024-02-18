@@ -1,11 +1,11 @@
 export function generateRelativeUrl(
   url: string,
-  basePath = process.env.TINA_BASE_PATH || "",
+  basePath = import.meta.env.BASE_URL,
 ) {
   const normalizedBasePath = basePath.endsWith("/")
     ? basePath.slice(0, -1)
     : basePath;
   const normalizedUrl = url.startsWith("/") ? url : `/${url}`;
 
-  return `/${normalizedBasePath}${normalizedUrl}`.replace(/([^:]\/)\/+/g, "$1");
+  return `${normalizedBasePath}${normalizedUrl}`.replace(/([^:]\/)\/+/g, "$1");
 }
