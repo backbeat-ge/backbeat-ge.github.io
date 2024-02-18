@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.39",
-    "@types/node": "^20.11.7"
+    "@types/node": "^20.11.19"
   }
 }
