@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://vichango.github.io',
-  base: process.env.TINA_BASE_PATH || "",
+  base: process.env.TINA_BASE_PATH ? `/${process.env.TINA_BASE_PATH}` : "",
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
