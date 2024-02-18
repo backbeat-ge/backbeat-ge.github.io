@@ -10,6 +10,7 @@ const branch =
 export default defineConfig({
   branch,
 
+  // Get these from tina.io
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
   token: process.env.TINA_TOKEN,
 
@@ -21,8 +22,8 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
       publicFolder: "public",
+      mediaRoot: "uploads",
     },
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
@@ -67,13 +68,6 @@ export default defineConfig({
             required: true,
           },
           {
-            type: "reference",
-            collections: ["place"],
-            name: "place",
-            label: "Place",
-            required: true,
-          },
-          {
             type: "datetime",
             name: "date",
             label: "Date",
@@ -81,6 +75,13 @@ export default defineConfig({
             ui: {
               utc: true,
             },
+          },
+          {
+            type: "reference",
+            collections: ["place"],
+            name: "place",
+            label: "Place",
+            required: true,
           },
           {
             type: "boolean",
@@ -92,6 +93,12 @@ export default defineConfig({
             name: "body",
             label: "Body",
             isBody: true,
+          },
+          {
+            type: "image",
+            name: "imageSrc",
+            label: "Cover image",
+            required: false,
           },
         ],
       },

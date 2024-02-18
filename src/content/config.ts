@@ -16,6 +16,7 @@ const eventCollection = defineCollection({
     place: z.string(),
     date: z.date(),
     published: z.boolean(),
+    imageSrc: z.string().optional(),
   }),
 });
 const placeCollection = defineCollection({

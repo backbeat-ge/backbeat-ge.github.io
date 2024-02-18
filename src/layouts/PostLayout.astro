@@ -8,4 +8,5 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
   <p>Post date: {format(new Date(frontmatter.date), "dd.MM.yyyy")}</p>
   <slot />
+  <img src={frontmatter.imageSrc} alt={frontmatter.title} />
 </Layout>
