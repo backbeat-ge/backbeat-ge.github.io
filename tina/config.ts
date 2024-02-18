@@ -10,15 +10,13 @@ const branch =
 export default defineConfig({
   branch,
 
-  // Get this from tina.io
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
-  // Get this from tina.io
   token: process.env.TINA_TOKEN,
 
   build: {
     outputFolder: "admin",
     publicFolder: "public",
-    basePath: "backbeat-astro",
+    basePath: process.env.TINA_BASE_PATH || "",
     host: true,
   },
   media: {

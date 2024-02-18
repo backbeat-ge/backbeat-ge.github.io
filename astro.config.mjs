@@ -1,10 +1,12 @@
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/subdomain' : '';
+
 export default defineConfig({
   site: 'https://vichango.github.io',
-  base: '/backbeat-astro',
+  base: basePath,
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],

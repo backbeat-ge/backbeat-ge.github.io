@@ -64,6 +64,7 @@ jobs:
         env:
           TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+          TINA_BASE_PATH: ${{ secrets.TINA_BASE_PATH }}
         run: npx tinacms build
       - name: Build with Astro
         run: |
