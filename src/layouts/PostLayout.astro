@@ -9,8 +9,12 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
   <p>Post date: {format(new Date(frontmatter.date), "dd.MM.yyyy")}</p>
   <slot />
-  <img
-    src={generateRelativeUrl(frontmatter.imageSrc)}
-    alt={frontmatter.title}
-  />
+  {
+    frontmatter.imageSrc && (
+      <img
+        src={generateRelativeUrl(frontmatter.imageSrc)}
+        alt={frontmatter.title}
+      />
+    )
+  }
 </Layout>
