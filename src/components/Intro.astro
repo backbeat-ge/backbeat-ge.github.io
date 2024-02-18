@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  lang: string;
+}
+
+import logo from "../images/logo.png";
+
+const { lang } = Astro.props;
+---
+
+<section class="mx-auto max-w-prose w-full">
+  <Image
+    src={logo}
+    alt={"fr" === lang ? "Logo de Backbeat" : "Backbeat logo"}
+    class="text-center mx-auto"
+    height={150}
+  />
+  {
+    "fr" === lang && (
+      <>
+        <p class="text-stone-800 pb-3">
+          Depuis quelques années maintenant, Backbeat partage son enthousiame
+          pour le swing et les danses jazz.
+        </p>
+        <p class="text-stone-800 pb-3">
+          Rejoindre Backbeat c'est rejoindre une communauté curieuse et
+          passionnée, mue par le désir d'explorer le jazz, sa musique, ses
+          danses et la culture afro-américaine qui leur a donné naissance.
+        </p>
+        <p class="text-stone-800 pb-3">
+          C'est aussi rejoindre un groupe qui s'engage pour créer des espaces
+          d'émancipation, de rencontre et de reconnaissance mutuelle pour
+          tou·te·s.
+        </p>
+      </>
+    )
+  }
+  {
+    "en" === lang && (
+      <>
+        <p class="text-stone-800 pb-3">
+          For a few years now, Backbeat has been sharing its enthusiasm for
+          swing and jazz dances.
+        </p>
+        <p class="text-stone-800 pb-3">
+          Joining Backbeat means joining a curious and passionate community,
+          driven by the desire to explore jazz, its music, its dances and the
+          African-American culture that gave birth to them.
+        </p>
+        <p class="text-stone-800 pb-3">
+          It also means joining a group that is committed to creating spaces for
+          emancipation, meeting and mutual recognition for everyone.
+        </p>
+      </>
+    )
+  }
+</section>

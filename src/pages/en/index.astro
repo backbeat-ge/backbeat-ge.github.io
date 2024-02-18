@@ -1,11 +1,13 @@
 ---
-import { format } from "date-fns";
-import Layout from "../../layouts/Layout.astro";
-
 import { getCollection } from "astro:content";
+import { format } from "date-fns";
+import Hero from "../../components/Hero.astro";
+import Intro from "../../components/Intro.astro";
+import heroPhoto from "../../images/hero-photo-1.jpg";
+import Layout from "../../layouts/Layout.astro";
+import { generateRelativeUrl } from "../../utils";
 
 const lang = "en";
-const allPosts = await getCollection("posts", ({ id }) => id.startsWith(lang));
 const allEvents = await getCollection(
   "events",
   ({ id, data: { published } }) => {
@@ -14,30 +16,26 @@ const allEvents = await getCollection(
 );
 ---
 
-<Layout title="Backbeat">
-  <main class="w-60 mx-auto bg-slate-900">
-    <h1 class="text-gradient">Posts</h1>
+<Layout title="Homepage | Backbeat">
+  <Hero image={heroPhoto} alt="Danse au Parc des Bastions" />
+  <Intro lang={lang} />
+
+  <section class="mx-auto max-w-prose w-full">
+    <h1 class="text-gradient">Prochains événements</h1>
     <ul>
       {
-        allPosts.map((post) => (
-          <li>
-            <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
-          </li>
-        ))
+        allEvents.map((event) => {
+          const eventUrl = generateRelativeUrl(`/events/${event.slug}/`);
+          return (
+            <li>
+              <a href={eventUrl}>
+                {format(new Date(event.data.date), "dd.MM.yyyy")}
+                {event.data.title}
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
-    <h1 class="text-gradient">Events</h1>
-    <ul>
-      {
-        allEvents.map((event) => (
-          <li>
-            <a href={`/events/${event.slug}/`}>
-              {format(new Date(event.data.date), "dd.MM.yyyy")}
-              {event.data.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </main>
+  </section>
 </Layout>
