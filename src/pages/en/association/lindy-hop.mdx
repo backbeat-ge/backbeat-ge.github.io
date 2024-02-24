@@ -1,0 +1,60 @@
+---
+layout: "../../../layouts/Layout.astro"
+title: Une brève histoire du Lindy Hop
+---
+
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import CaptionedImage from "../../../components/Captioned.astro";
+import MarkdownSection from "../../../components/MarkdownSection.astro";
+import MoreSoon from "../../../components/MoreSoon.astro";
+import artKane from "../../../images/association/lindy-hop/Art-Kane-1958.webp";
+import maeJames from "../../../images/association/lindy-hop/Mae-James-LIFE.jpg";
+
+<MarkdownSection class="bg-stone-200">
+  # A Brief History of Lindy Hop
+
+  <div class="uppercase px-6 text-sm">
+    (This content is not original, it is heavily inspired by the page [Swungover](https://swungover.wordpress.com/), created and maintained by Bobby White. We are not historians: the following statements should be taken with a grain of salt.)
+  </div>
+
+  <CaptionedImage
+    image={maeJames}
+    alt="Four generations of jazz musicians, captured by Art Kane in 1958."
+  >
+    Willa Mae Ricker and Leon James: photoshoot for LIFE magazine.
+  </CaptionedImage>
+</MarkdownSection>
+
+<MarkdownSection>
+  ## If you had to remember a few key points
+
+  - Lindy Hop is a dance of African-American origin.
+  - Lindy Hop (its birth, development, and groove) is closely linked to the jazz of the 1930s-1940s, also known as swing.
+  - Lindy Hop places the improvisation of both partners at the center of the couple's dynamics.
+  - Lindy Hop was created in a context of severe racial segregation and discrimination. Its symbols, history, and the emotions expressed in it (the famous "joy" of Lindy Hop) are inseparable from this context.
+  - **Frankie Manning**, **Norma Miller**, **Willa Mae Ricker**, **Ann Johnson**, **Al Minns**, and **Leon James** are pioneers of Lindy Hop.
+
+  <CaptionedImage
+    image={artKane}
+    alt="Four generations of jazz musicians, captured by Art Kane in 1958."
+  >
+    Four generations of jazz musicians, captured by Art Kane in 1958. More information about this photoshoot [here](https://www.theguardian.com/music/gallery/2018/dec/17/a-great-day-in-harlem-behind-art-kaness-classic-1958-jazz-photograph).
+  </CaptionedImage>
+</MarkdownSection>
+
+<MarkdownSection class="bg-stone-200">
+## Popular Music and Dances of African-American Origin
+
+  Like many popular social dances, the history of Lindy Hop is inseparable from the history of the music it is danced to. The jazz of the late 1920s, then the 1930s, and finally the first part of the 1940s (i.e., swing) is the alpha and omega of Lindy Hop. It gives it its particular groove, its way of conceiving the relationship between partners, as well as its energy, both joyful and profound.
+
+  During the first decade of the twentieth century, the black and Creole communities of New Orleans gave birth to several musical forms that had a great influence on American popular culture (e.g., ragtime and emerging "hot jazz"). Both locally and nationally, these different music styles were quickly accompanied by dances that revolved around their particular energies.
+
+  <YouTube id="tuCGSL03-1c"/>
+  {/* Early Jazz (Wix Channel) */}
+  {/* https://www.youtube.com/watch?v=tuCGSL03-1c */}
+  {/* https://www.youtube.com/watch?v=PwpriGltf9g */}
+  {/* https://www.youtube.com/watch?v=Dv_9B7W7Q0w */}
+
+</MarkdownSection>
+
+<MoreSoon />

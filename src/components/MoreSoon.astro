@@ -5,7 +5,7 @@ const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 ---
 
-<div class="text-center">
-  <h1 class="text-4xl">{t("more-soon")}</h1>
-  <h2 class="text-xl">{t("more-soon.help")}</h2>
+<div class="p-8 text-center bg-sky-100">
+  <h1 class="text-4xl pb-2 text-amber-700">{t("more-soon")}</h1>
+  <h2 class="text-xl text-stone-600">🚧 {t("more-soon.help")}</h2>
 </div>

@@ -1,26 +1,52 @@
 ---
-import { getCollection } from "astro:content";
-import { format } from "date-fns";
+// import { getCollection } from "astro:content";
+// import { format } from "date-fns";
+import { Image } from "astro:assets";
 import Hero from "../../components/Hero.astro";
-import Intro from "../../components/Intro.astro";
 import heroPhoto from "../../images/hero-photo-1.jpg";
 import Layout from "../../layouts/Layout.astro";
-import { generateRelativeUrl } from "../../utils";
+// import { generateRelativeUrl } from "../../utils";
 
-const lang = "en";
-const allEvents = await getCollection(
-  "events",
-  ({ id, data: { published } }) => {
-    return id.startsWith(lang) && published;
-  }
-);
+import MoreSoon from "../../components/MoreSoon.astro";
+import logo from "../../images/logo.png";
+
+// const lang = "en";
+// const allEvents = await getCollection(
+//   "events",
+//   ({ id, data: { published } }) => {
+//     return id.startsWith(lang) && published;
+//   }
+// );
 ---
 
 <Layout title="Homepage | Backbeat">
   <Hero image={heroPhoto} alt="Danse au Parc des Bastions" />
-  <Intro lang={lang} />
 
-  <section class="mx-auto max-w-prose w-full">
+  <section class="mx-auto max-w-prose w-full py-8">
+    <Image
+      src={logo}
+      alt="Backbeat logo"
+      class="text-center mx-auto pb-6"
+      height={150}
+    />
+    <p class="text-stone-800 pb-3">
+      For a few years now, Backbeat has been sharing its enthusiasm for swing
+      and jazz dances.
+    </p>
+    <p class="text-stone-800 pb-3">
+      Joining Backbeat means joining a curious and passionate community, driven
+      by the desire to explore jazz, its music, its dances and the
+      African-American culture that gave birth to them.
+    </p>
+    <p class="text-stone-800 pb-3">
+      It also means joining a group that is committed to creating spaces for
+      emancipation, meeting and mutual recognition for everyone.
+    </p>
+  </section>
+
+  <MoreSoon />
+
+  <!-- <section class="mx-auto max-w-prose w-full">
     <h1 class="text-gradient">Prochains événements</h1>
     <ul>
       {
@@ -37,5 +63,5 @@ const allEvents = await getCollection(
         })
       }
     </ul>
-  </section>
+  </section> -->
 </Layout>

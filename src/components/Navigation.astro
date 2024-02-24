@@ -16,12 +16,16 @@ const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 
 const homeUrl = getRelativeLocaleUrl(lang, "");
-const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
+const charterUrl = getRelativeLocaleUrl(lang, "association/charter");
 const becomeMemberUrl = getRelativeLocaleUrl(lang, "association/become-member");
 const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
+const conditionsUrl = getRelativeLocaleUrl(
+  lang,
+  "association/registration-conditions"
+);
 ---
 
-<header class="lg:flex p-2 gap-5 bg-sky-50">
+<header class="lg:flex p-2 gap-5 bg-sky-100">
   <Astronav>
     <div class="flex w-full justify-between">
       <div class="block flex items-center">
@@ -29,7 +33,29 @@ const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
           <Image src={logoImage} alt="Our logo" class="h-16 w-auto" />
         </a>
         <div class="text-xs ml-4">
-          Danse<br />Musique<br />Communauté<br />Culture Swing à Genève
+          {
+            "fr" === lang ? (
+              <>
+                Danse
+                <br />
+                Musique
+                <br />
+                Communauté
+                <br />
+                Culture Swing à Genève
+              </>
+            ) : (
+              <>
+                Dance
+                <br />
+                Music
+                <br />
+                Community
+                <br />
+                Swing Culture in Geneva
+              </>
+            )
+          }
         </div>
       </div>
       <div class="block flex items-center lg:hidden">
@@ -38,7 +64,7 @@ const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
     </div>
     <MenuItems class="hidden lg:flex">
       <ul
-        class="flex flex-col p-3 gap-1 lg:flex-row lg:gap-6 lg:items-center lg:pr-6"
+        class="flex flex-col p-3 gap-1 lg:flex-row lg:gap-6 lg:items-center lg:pr-6 whitespace-nowrap"
       >
         <li>
           <a class="text-stone-800 hover:text-sky-800" href={homeUrl}
@@ -65,29 +91,41 @@ const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
             </button>
             <DropdownItems class="relative">
               <div
-                class="w-full lg:absolute lg:w-48 z-10 lg:left-0 origin-top-left"
+                class="w-full lg:absolute lg:w-auto z-10 lg:right-0 origin-top-right"
               >
                 <ul
-                  class="lg:py-3 lg:bg-sky-50 lg:rounded-md lg:shadow lg:border"
+                  class="lg:py-3 lg:bg-sky-100 lg:rounded-md lg:shadow lg:border lg:text-right"
                 >
-                  <li class="px-3">
+                  <li class="px-3 hover:bg-sky-50">
                     <a
-                      class="py-1 text-stone-800 hover:text-sky-800"
-                      href={charteUrl}
+                      class="py-2 text-stone-800 hover:text-sky-800"
+                      href={charterUrl}
                     >
                       {t("nav.charte")}
                     </a>
+                  </li>
+                  <li class="px-3 hover:bg-sky-50">
                     <a
-                      class="py-1 text-stone-800 hover:text-sky-800"
+                      class="py-2 text-stone-800 hover:text-sky-800"
                       href={becomeMemberUrl}
                     >
                       {t("nav.become-member")}
                     </a>
+                  </li>
+                  <li class="px-3 hover:bg-sky-50">
                     <a
-                      class="py-1 text-stone-800 hover:text-sky-800"
+                      class="py-2 text-stone-800 hover:text-sky-800"
                       href={lindyHopUrl}
                     >
                       {t("nav.lindy-hop")}
+                    </a>
+                  </li>
+                  <li class="px-3 hover:bg-sky-50">
+                    <a
+                      class="py-2 text-stone-800 hover:text-sky-800"
+                      href={conditionsUrl}
+                    >
+                      {t("nav.registration-conditions")}
                     </a>
                   </li>
                 </ul>
@@ -95,7 +133,7 @@ const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
             </DropdownItems>
           </Dropdown>
         </li>
-        <li>
+        <!-- <li>
           <a
             class="text-stone-800 hover:text-sky-800"
             href={getRelativeLocaleUrl(lang, "events")}>Cours</a
@@ -106,7 +144,7 @@ const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
             class="text-stone-800 hover:text-sky-800"
             href={getRelativeLocaleUrl(lang, "events")}>{t("nav.events")}</a
           >
-        </li>
+        </li> -->
       </ul>
     </MenuItems>
   </Astronav>

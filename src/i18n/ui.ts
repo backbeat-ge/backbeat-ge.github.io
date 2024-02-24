@@ -18,7 +18,8 @@ export const ui = {
     "nav.charte": "Notre charte",
     "nav.become-member": "Devenir membre",
     "nav.lindy-hop": "Lindy Hop",
-    "more-soon": "Plus de contenu bientôt",
+    "nav.registration-conditions": "Conditions d'inscription",
+    "more-soon": "À suivre…",
     "more-soon.help": "Nous migrons notre site, merci de ta patience.",
   },
   en: {
@@ -30,10 +31,11 @@ export const ui = {
     "nav.home": "Home",
     "nav.events": "Events",
     "nav.association": "The association",
-    "nav.charte": "Our chart",
+    "nav.charte": "Our charter",
     "nav.become-member": "Become member",
     "nav.lindy-hop": "Lindy Hop",
-    "more-soon": "More contetn coming soon",
+    "nav.registration-conditions": "Registration conditions",
+    "more-soon": "More soon…",
     "more-soon.help": "We are migrating our website, please be patient.",
   },
 } as const;
