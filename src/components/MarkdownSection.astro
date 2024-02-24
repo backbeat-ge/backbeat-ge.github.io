@@ -1,0 +1,20 @@
+---
+interface Props {
+  class: string;
+}
+
+const { class: classes } = Astro.props;
+---
+
+<div class={`w-full py-8 ${classes}`}>
+  <div
+    class="prose max-w-prose mx-auto
+    prose-headers:font-bold
+    prose-h1:text-xxl prose-h1:text-center prose-h1:uppercase
+    prose-h2:font-bold prose-h2:text-xl prose-h1:uppercase
+    prose-p:text-justify
+    prose-li:my-0"
+  >
+    <slot />
+  </div>
+</div>

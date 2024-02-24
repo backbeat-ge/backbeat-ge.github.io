@@ -4,6 +4,7 @@ interface Props {
 }
 
 import "@fontsource/montserrat";
+import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import { generateRelativeUrl } from "../utils";
 
@@ -25,9 +26,12 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="min-h-screen flex flex-col bg-stone-50">
     <Navigation />
-    <slot />
+    <div class="flex-grow">
+      <slot />
+    </div>
+    <Footer />
   </body>
 </html>
 

@@ -17,6 +17,8 @@ const t = useTranslations(lang);
 
 const homeUrl = getRelativeLocaleUrl(lang, "");
 const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
+const becomeMemberUrl = getRelativeLocaleUrl(lang, "association/become-member");
+const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
 ---
 
 <header class="lg:flex p-2 gap-5 bg-sky-50">
@@ -71,8 +73,22 @@ const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
                   <li class="px-3">
                     <a
                       class="py-1 text-stone-800 hover:text-sky-800"
-                      href={charteUrl}>{t("nav.charte")}</a
+                      href={charteUrl}
                     >
+                      {t("nav.charte")}
+                    </a>
+                    <a
+                      class="py-1 text-stone-800 hover:text-sky-800"
+                      href={becomeMemberUrl}
+                    >
+                      {t("nav.become-member")}
+                    </a>
+                    <a
+                      class="py-1 text-stone-800 hover:text-sky-800"
+                      href={lindyHopUrl}
+                    >
+                      {t("nav.lindy-hop")}
+                    </a>
                   </li>
                 </ul>
               </div>

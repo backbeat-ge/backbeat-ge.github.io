@@ -1,0 +1,27 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+
+const homeUrl = getRelativeLocaleUrl(lang, "");
+const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
+---
+
+<footer class="p-12 pt-32 bg-sky-50 my-auto mb-0">
+  <div class="flex w-full bg-blue-200">
+    <div class="grow bg-emerald-100">
+      <ul>
+        <li><a href="{{ homeUrl }}">Charte</a></li>
+        <li><a href="{{ charteUrl }}">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+    <div class="flex-none w-1/4 bg-pink-100">
+      <h2 class="text-lg font-bold">Backbeat</h2>
+      <p>Réseaux sociaux</p>
+      <p>Email</p>
+    </div>
+  </div>
+</footer>

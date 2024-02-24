@@ -1,0 +1,17 @@
+---
+interface Props {
+  image: ImageMetaData;
+  alt: string;
+}
+
+import { Image } from "astro:assets";
+
+const { alt, image } = Astro.props;
+---
+
+<div class="not-prose">
+  <Image src={image} alt={alt} class="w-full rounded-lg" />
+  <div class="text-right text-sm">
+    <slot />
+  </div>
+</div>

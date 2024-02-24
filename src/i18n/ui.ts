@@ -16,6 +16,10 @@ export const ui = {
     "nav.events": "Événements",
     "nav.association": "L'association",
     "nav.charte": "Notre charte",
+    "nav.become-member": "Devenir membre",
+    "nav.lindy-hop": "Lindy Hop",
+    "more-soon": "Plus de contenu bientôt",
+    "more-soon.help": "Nous migrons notre site, merci de ta patience.",
   },
   en: {
     "alt.logo": "Our association's logo",
@@ -27,5 +31,9 @@ export const ui = {
     "nav.events": "Events",
     "nav.association": "The association",
     "nav.charte": "Our chart",
+    "nav.become-member": "Become member",
+    "nav.lindy-hop": "Lindy Hop",
+    "more-soon": "More contetn coming soon",
+    "more-soon.help": "We are migrating our website, please be patient.",
   },
 } as const;

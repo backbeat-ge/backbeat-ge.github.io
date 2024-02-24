@@ -10,3 +10,7 @@ docker run -it --rm --volume "$(pwd)":/app --entrypoint bash node:lts
 ## In development
 
 Run using Docker Compose.
+
+## Tailwind
+
+- Color palette: https://tailwindcss.com/docs/customizing-colors

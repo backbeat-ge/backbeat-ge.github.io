@@ -1,0 +1,20 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <main class="mx-auto max-w-prose w-full">
+    <div
+      class="prose pt-12
+      prose-headings:uppercase
+      prose-h1:font-bold prose-h1:text-xxl prose-h1:text-center
+      prose-h2:font-bold prose-h2:text-xl
+      prose-a:text-sky-600
+      prose-p:text-justify"
+    >
+      <slot />
+    </div>
+  </main>
+</Layout>
