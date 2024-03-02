@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../../../i18n/utils";
+import dalcrozePhoto from "../../../images/courses/dalcroze.jpg";
+import grottesPhoto from "../../../images/courses/grottes-1.jpg";
+import whiteysPhoto from "../../../images/courses/whiteys-lindy-hoppers.jpg";
+import Layout from "../../../layouts/Layout.astro";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+
+const weeklyCoursesUrl = getRelativeLocaleUrl(
+  lang,
+  "fr" === lang ? "cours/hebdomadaires" : "courses/weekly"
+);
+---
+
+<Layout title="Courses | Backbeat">
+  <div class="flex items-center justify-center h-full">
+    <div class="flex items-start max-h-[240px] overflow-hidden">
+      <Image src={dalcrozePhoto} alt="Dalcroze" class="w-full object-cover" />
+      <Image
+        src={whiteysPhoto}
+        alt="Whitey's Lindy Hoppers"
+        class="w-full object-cover"
+      />
+      <Image
+        src={grottesPhoto}
+        alt="École des Grottes"
+        class="w-full object-cover"
+      />
+    </div>
+  </div>
+
+  <div class="w-full bg-sky-600 text-center text-white py-24">
+    <div class="max-w-screen-lg mx-auto">
+      <h1 class="text-4xl font-bold mb-6 oswald">
+        Looking for jazz dance classes? Lindy Hop? Solo Jazz?
+      </h1>
+      <h2 class="text-xl mb-6">We offer you two formats!</h2>
+
+      <div class="flex flex-col md:flex-row">
+        <div class="flex-1 border-4 border-yellow-500 m-6 p-6">
+          <h1 class="text-2xl font-bold mb-4 oswald">Les cours hebdos</h1>
+          <p class="text-left mb-3">
+            Week after week, build connections, listen to jazz, and learn to
+            dance the Lindy Hop. Laughter, warmth, and guaranteed learning!
+          </p>
+          <p class="text-left mt-8">
+            <a
+              class="bg-teal-800 hover:bg-teal-600 text-white text-lg text-yellow-500 py-2 px-4 mr-2"
+              href={weeklyCoursesUrl}
+            >
+              Learn more
+            </a>
+          </p>
+        </div>
+        <div class="flex-1 border-4 border-yellow-500 m-6 p-4">
+          <h1 class="text-2xl font-bold mb-4 oswald">Les ateliers</h1>
+          <p class="text-left mb-3">
+            Intense weekends of Lindy Hop and Solo Jazz, with amazing guest
+            teachers!
+          </p>
+          <p class="text-left mb-3">
+            Courses suitable for all levels, from beginners to experienced.
+          </p>
+          <p class="text-left mb-3">
+            An great opportunity to discover, or go further.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

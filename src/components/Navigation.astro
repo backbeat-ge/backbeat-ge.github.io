@@ -19,9 +19,9 @@ const homeUrl = getRelativeLocaleUrl(lang, "");
 const charterUrl = getRelativeLocaleUrl(lang, "association/charter");
 const becomeMemberUrl = getRelativeLocaleUrl(lang, "association/become-member");
 const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
-const classesUrl = getRelativeLocaleUrl(
+const coursesUrl = getRelativeLocaleUrl(
   lang,
-  "fr" === lang ? "cours" : "classes"
+  "fr" === lang ? "cours" : "courses"
 );
 const conditionsUrl = getRelativeLocaleUrl(
   lang,
@@ -138,8 +138,8 @@ const conditionsUrl = getRelativeLocaleUrl(
           </Dropdown>
         </li>
         <li>
-          <a class="text-stone-800 hover:text-sky-800" href={classesUrl}
-            >{t("nav.classes")}</a
+          <a class="text-stone-800 hover:text-sky-800" href={coursesUrl}
+            >{t("nav.courses")}</a
           >
         </li>
         <!--
