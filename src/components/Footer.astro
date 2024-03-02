@@ -6,13 +6,19 @@ import FontAwesomeIcon from "./icons/FontAwesomeIcon.astro";
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 
-const homeUrl = getRelativeLocaleUrl(lang, "");
-const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
+const charterUrl = getRelativeLocaleUrl(lang, "association/charter");
+const registrationConditionsUrl = getRelativeLocaleUrl(
+  lang,
+  "association/registration-conditions"
+);
+
+const homeFrUrl = getRelativeLocaleUrl("fr", "");
+const homeEnUrl = getRelativeLocaleUrl("en", "");
 ---
 
 <footer class="p-12 pt-20 bg-amber-50 my-auto mb-0 text-stone-600">
-  <div class="flex w-full">
-    <div class="flex-none lg:w-2/5">
+  <div class="flex flex-col lg:flex-row w-full">
+    <div class="flex-none lg:w-2/5 mb-6">
       <h2 class="text-xl font-bold mb-4">Backbeat</h2>
       <ul class="space-y-2">
         <li class="flex items-center">
@@ -35,11 +41,24 @@ const charteUrl = getRelativeLocaleUrl(lang, "association/charte");
         </li>
       </ul>
     </div>
-    <!-- <div class="grow">
-      <ul>
-        <li><a href="{{ homeUrl }}">Charte</a></li>
-        <li><a href="{{ charteUrl }}">Politique de confidentialité</a></li>
-      </ul>
-    </div> -->
+    <div class="grow">
+      <h2 class="text-xl mb-4">{t("footer.fast-access")}</h2>
+      <div class="flex flex-col md:flex-row">
+        <ul class="flex-1">
+          <li><a href={charterUrl}>{t("nav.charte")}</a></li>
+          <li>
+            <a href={registrationConditionsUrl}
+              >{t("nav.registration-conditions")}</a
+            >
+          </li>
+        </ul>
+        <ul class="flex-1">
+          <li>
+            {"fr" === lang && <a href={homeEnUrl}>In English</a>}
+            {"en" === lang && <a href={homeFrUrl}>En français</a>}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </footer>

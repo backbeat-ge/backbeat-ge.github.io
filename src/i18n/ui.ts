@@ -23,6 +23,7 @@ export const ui = {
     "hero.title": "Ensemble, en swing!",
     "more-soon": "À suivre…",
     "more-soon.help": "Nous migrons notre site, merci de ta patience.",
+    "footer.fast-access": "Accès rapide",
   },
   en: {
     "alt.logo": "Our association's logo",
@@ -41,5 +42,6 @@ export const ui = {
     "hero.title": "Together, in swing!",
     "more-soon": "More soon…",
     "more-soon.help": "We are migrating our website, please be patient.",
+    "footer.fast-access": "Fast access",
   },
 } as const;
