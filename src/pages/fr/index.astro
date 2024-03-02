@@ -2,7 +2,6 @@
 // import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Hero from "../../components/Hero.astro";
-import heroPhoto from "../../images/hero-photo-1.jpg";
 import Layout from "../../layouts/Layout.astro";
 
 import MoreSoon from "../../components/MoreSoon.astro";
@@ -18,7 +17,7 @@ import logo from "../../images/logo.png";
 ---
 
 <Layout title="Accueil | Backbeat">
-  <Hero image={heroPhoto} alt="Danse au Parc des Bastions" />
+  <Hero />
 
   <section class="mx-auto max-w-prose w-full py-8">
     <Image

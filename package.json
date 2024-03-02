@@ -14,16 +14,19 @@
     "@astrojs/check": "^0.4.1",
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/montserrat": "^5.0.16",
+    "@fontsource-variable/montserrat": "^5.0.17",
+    "@fontsource-variable/oswald": "^5.0.18",
     "astro": "^4.2.5",
     "astro-navbar": "^2.3.0",
     "tailwindcss": "^3.4.1",
     "tinacms": "^1.5.28",
+    "tinycolor2": "^1.6.0",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@tinacms/cli": "^1.5.39",
-    "@types/node": "^20.11.19"
+    "@types/node": "^20.11.19",
+    "@types/tinycolor2": "^1.4.6"
   }
 }

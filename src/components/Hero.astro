@@ -1,19 +1,49 @@
 ---
-import { type ImageMetadata } from "astro";
 import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../i18n/utils";
+import heroPhoto from "../images/hero-photo-1.jpg";
+import whiteLogoImage from "../images/logo-white.png";
 
-interface Props {
-  image: ImageMetadata;
-  alt: string;
-}
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
 
-const { image, alt } = Astro.props;
+const classesUrl = getRelativeLocaleUrl(
+  lang,
+  "fr" === lang ? "cours" : "classes"
+);
 ---
 
-<section class="w-full lg:max-h-[640px] overflow-hidden mb-8">
+<section class="w-full lg:max-h-[640px] overflow-hidden mb-8 relative">
   <Image
-    src={image}
-    alt={alt}
+    src={heroPhoto}
+    alt={"fr" === lang
+      ? "Danse au Parc des Bastions"
+      : "Dancing at Parc des Bastions"}
     class="w-full mt-[-120px] object-none lg:object-cover"
   />
+
+  <div class="absolute top-0 left-0 p-6 flex items-center">
+    <div>
+      <Image src={whiteLogoImage} alt="Our logo" class="h-32 w-auto" />
+    </div>
+    <div class="text-center">
+      <h1 class="text-4xl text-white font-bold px-4">Ensemble, en swing!</h1>
+      <hr class="h-1 my-2 bg-white border-0" />
+
+      <a
+        class="bg-rose-800 hover:bg-rose-600 text-white text-lg text-yellow-500 py-2 px-4 mr-2"
+        href={classesUrl}
+      >
+        {t("nav.classes")}
+      </a>
+      <!-- <button
+        class="bg-rose-800 hover:bg-rose-600 text-white text-lg text-yellow-500 py-2 px-4 mr-2"
+        >Événements</button
+      > -->
+    </div>
+  </div>
+
+  <!-- <div class="absolute top-0 left-0 p-12">
+  </div> -->
 </section>

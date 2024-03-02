@@ -1,0 +1,50 @@
+---
+import tinycolor from "tinycolor2";
+import Layout from "./Layout.astro";
+
+const {
+  frontmatter: { title, frontColor, bannerSrc, pricing, registrationUrl },
+} = Astro.props;
+console.log("🚀 ~ pricing:", pricing);
+
+const computedBgColor = tinycolor(frontColor).lighten(25).toString();
+---
+
+<Layout
+  title={`${title} | Backbeat`}
+  style={`background-color: ${computedBgColor};`}
+>
+  <div class="flex flex-col max-w-screen-lg mx-auto bg-stone-100 m-12">
+    <div style={`background-color: ${frontColor}`}>
+      <h1 class="text-4xl p-4 text-center text-white oswald">
+        {title}
+      </h1>
+    </div>
+    <div class="flex items-center max-h-[240px] overflow-hidden">
+      <img
+        src={bannerSrc}
+        alt="Bannière du cours actuel"
+        class="w-full object-cover"
+      />
+    </div>
+    <div class="p-12">
+      <div
+        class="prose max-w-prose mx-auto prose-headers:font-bold
+      prose-h1:text-3xl prose-h1:text-center prose-h1:uppercase
+      prose-h2:text-2xl prose-h2:font-bold prose-h1:uppercase
+      prose-h3:text-xl prose-h2:font-bold prose-h1:uppercase
+      prose-p:text-justify
+      prose-li:my-0"
+      >
+        <slot />
+      </div>
+    </div>
+    <div class="p-12 text-center">
+      <a
+        style={`background-color: ${frontColor};`}
+        class="py-2 px-4 text-white"
+        href={registrationUrl}>Je m'inscris!</a
+      >
+    </div>
+  </div>
+</Layout>

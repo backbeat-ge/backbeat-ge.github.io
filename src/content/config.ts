@@ -19,6 +19,19 @@ const eventCollection = defineCollection({
     imageSrc: z.string().optional(),
   }),
 });
+const courseCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    fromDate: z.date(),
+    toDate: z.date(),
+    place: z.string(),
+    registrationUrl: z.string().url().optional(),
+    bannerSrc: z.string().optional(),
+    frontColor: z.string().optional(),
+    published: z.boolean(),
+  }),
+});
 const placeCollection = defineCollection({
   type: "data",
   schema: z.object({
@@ -30,5 +43,6 @@ const placeCollection = defineCollection({
 export const collections = {
   posts: postsCollection,
   events: eventCollection,
+  courses: courseCollection,
   places: placeCollection,
 };

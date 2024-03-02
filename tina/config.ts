@@ -103,6 +103,77 @@ export default defineConfig({
         ],
       },
       {
+        name: "course",
+        label: "Courses",
+        path: "src/content/courses",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "fromDate",
+            label: "Starting date",
+            required: true,
+            ui: {
+              utc: true,
+            },
+          },
+          {
+            type: "datetime",
+            name: "toDate",
+            label: "End date",
+            required: true,
+            ui: {
+              utc: true,
+            },
+          },
+          {
+            type: "reference",
+            collections: ["place"],
+            name: "place",
+            label: "Place",
+            required: true,
+          },
+          {
+            type: "image",
+            name: "bannerSrc",
+            label: "Banner image",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "frontColor",
+            label: "Front color",
+            required: false,
+            ui: {
+              component: "color",
+            },
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Description",
+            isBody: true,
+          },
+          {
+            type: "string",
+            name: "registrationUrl",
+            label: "Registration URL",
+            required: false,
+          },
+          {
+            type: "boolean",
+            name: "published",
+            label: "Published",
+          },
+        ],
+      },
+      {
         name: "place",
         label: "Places",
         path: "src/content/places",
@@ -123,6 +194,12 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "rich-text",
+            name: "comments",
+            label: "Comments",
+            required: false,
           },
         ],
       },
