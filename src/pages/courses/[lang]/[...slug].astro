@@ -16,12 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-console.log("🚀 ~ entry:", entry);
-
 const { Content, headings } = await entry.render();
-
-console.log("🚀 ~ Content:", Content);
-console.log("🚀 ~ headings:", headings);
 ---
 
 <CourseLayout frontmatter={entry.data}>

@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://vichango.github.io',
+  site: 'https://backbeat-ge.github.io',
   base: process.env.TINA_BASE_PATH ? `/${process.env.TINA_BASE_PATH}` : "",
   i18n: {
     defaultLocale: 'fr',
