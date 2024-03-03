@@ -2,14 +2,11 @@
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import { format } from "date-fns";
-import { useTranslations } from "../../../i18n/utils";
 import headerImage from "../../../images/courses/grottes-2.jpg";
 import Layout from "../../../layouts/Layout.astro";
 import { generateRelativeUrl } from "../../../utils";
 
 const lang = Astro.currentLocale as "fr" | "en";
-const t = useTranslations(lang);
-
 const allCourses = await getCollection(
   "courses",
   ({ id, data: { published } }) => {

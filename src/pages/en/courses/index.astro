@@ -1,15 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { useTranslations } from "../../../i18n/utils";
 import dalcrozePhoto from "../../../images/courses/dalcroze.jpg";
 import grottesPhoto from "../../../images/courses/grottes-1.jpg";
 import whiteysPhoto from "../../../images/courses/whiteys-lindy-hoppers.jpg";
 import Layout from "../../../layouts/Layout.astro";
 
 const lang = Astro.currentLocale as "fr" | "en";
-const t = useTranslations(lang);
-
 const weeklyCoursesUrl = getRelativeLocaleUrl(
   lang,
   "fr" === lang ? "cours/hebdomadaires" : "courses/weekly"

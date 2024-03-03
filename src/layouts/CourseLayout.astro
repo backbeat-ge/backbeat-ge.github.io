@@ -3,7 +3,7 @@ import tinycolor from "tinycolor2";
 import Layout from "./Layout.astro";
 
 const {
-  frontmatter: { title, frontColor, bannerSrc, pricing, registrationUrl },
+  frontmatter: { title, frontColor, bannerSrc, registrationUrl },
 } = Astro.props;
 
 const computedBgColor = tinycolor(frontColor).lighten(25).toString();
