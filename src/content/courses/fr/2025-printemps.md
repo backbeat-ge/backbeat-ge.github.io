@@ -1,13 +1,14 @@
 ---
-title: Cours hebdomadaires - Février à juin 2024
-fromDate: 2024-02-28T00:00:00.000Z
-toDate: 2024-06-16T00:00:00.000Z
+title: Cours hebdomadaires - Février à juin 2025
+fromDate: 2025-02-28T00:00:00.000Z
+toDate: 2025-06-16T00:00:00.000Z
 placeList:
+  - { place: src/content/places/ecole-hugo-de-senger.json }
   - { place: src/content/places/ecole-des-grottes.json }
 bannerSrc: /uploads/courses/2024-02-banner.png
 frontColor: "#8C52FF"
 registrationUrl: >-
-  https://docs.google.com/forms/d/e/1FAIpQLSeq3jkz7hw_Ey8DlBUjdetdjdOtVirkWL-NCt90m-YnKDdKow/viewform?hl=fr
+  https://github.com
 published: true
 ---
 
@@ -33,10 +34,10 @@ Le cours est conçu pour des personnes ayant déjà effectué au moins 6 mois de
 
 ## Horaries
 
-Tous les cours ont lieu le mercredi à l'[École des Grottes](https://w3w.co/utiliser.poulpe.frayer):
-
-- Solo Jazz : 18h45 - 19h45
-- Lindy Hop Débutant-Intermédiaire : 20h00 - 21h15
+- Solo jazz
+  - Mardi de 20h15 à 21h15 à l'École Hugo-de-Senger
+- Lindy hop
+  - Mercredi de 20h à 21h15 à l'[École des Grottes](https://w3w.co/utiliser.poulpe.frayer)
 
 ## Prix
 
@@ -46,11 +47,3 @@ Tous les cours ont lieu le mercredi à l'[École des Grottes](https://w3w.co/uti
 
 Si tu penses que tu devrais avoir droit à une réduction, mais que tu n'es ni
 aux études, ni au chômage, n'hésite pas à nous écrire un mail pour en parler.
-
-## Lieu
-
-**École des Grottes**<br>
-Rue Jean-Robert-Chouet<br>
-1202 Genève
-
-‼️ Même si l'adresse officielle de l'école des Grottes est à l'Avenue Eugène-Empeyta, on y accède par la rue Jean-Robert Chouet.

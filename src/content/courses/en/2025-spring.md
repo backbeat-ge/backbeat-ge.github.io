@@ -1,14 +1,12 @@
 ---
-title: Fall Semester 2024
-fromDate: 2024-02-28T00:00:00.000Z
-toDate: 2024-06-16T00:00:00.000Z
-bannerSrc: /uploads/courses/2024-02-banner.png
-frontColor: '#8C52FF'
-registrationUrl: >-
-  https://docs.google.com/forms/d/e/1FAIpQLSeq3jkz7hw_Ey8DlBUjdetdjdOtVirkWL-NCt90m-YnKDdKow/viewform?hl=en
+title: Spring 2025
+fromDate: 2025-02-02T00:00:00.000Z
+toDate: 2025-03-27T00:00:00.000Z
 placeList:
-  - { place: src/content/places/ecole-des-grottes.json }
-published: false
+  - place: src/content/places/ecole-hugo-de-senger.json
+  - place: src/content/places/ecole-des-grottes.json
+frontColor: '#E78888'
+published: true
 ---
 
 This semester we offer you two great courses again!
@@ -31,10 +29,11 @@ The course is designed for people who have already taken at least 6 months of EL
 
 ## Schedule
 
-All classes take place on Wednesdays:
-
-* Solo Jazz: 18:45 - 19:45
-* Lindy Hop Beginner-Intermediate: 20:00 - 21:15
+* Solo jazz
+  * Tuesdays from 20:15 to 21:45
+  * At Ecole Hugo-de-Senger
+* Lindy hop
+  * Wednesdays from 20:00 to 21:15
 
 ## Pricing
 

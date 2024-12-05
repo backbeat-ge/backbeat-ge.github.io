@@ -9,7 +9,11 @@ import Layout from "../../../layouts/Layout.astro";
 const lang = Astro.currentLocale as "fr" | "en";
 const weeklyCoursesUrl = getRelativeLocaleUrl(
   lang,
-  "fr" === lang ? "cours/hebdomadaires" : "classes/weekly"
+  "en" === lang ? "classes/weekly" : "cours/hebdomadaires",
+);
+const weeklyPracticeUrl = getRelativeLocaleUrl(
+  lang,
+  "en" === lang ? "classes/practice" : "cours/pratique",
 );
 ---
 
@@ -35,26 +39,33 @@ const weeklyCoursesUrl = getRelativeLocaleUrl(
       <h1 class="text-4xl font-bold mb-6 oswald">
         Tu cherches des cours de danses jazz? Lindy Hop? Solo Jazz?
       </h1>
-      <h2 class="text-xl mb-6">On te propose deux formats!</h2>
+      <h2 class="text-xl mb-6">On te propose trois formats!</h2>
 
-      <div class="flex flex-col md:flex-row">
-        <div class="flex-1 border-4 border-yellow-500 m-6 p-6">
+      <div class="flex flex-col md:flex-row md:flex-wrap md:justify-center">
+        <a
+          href={weeklyCoursesUrl}
+          class="flex-1 md:basis-[45%] border-4 border-teal-500 m-6 p-6 bg-teal-800 hover:bg-teal-600"
+        >
           <h1 class="text-2xl font-bold mb-4 oswald">Les cours hebdos</h1>
           <p class="text-left mb-3">
             Semaine après semaine, tisse des liens, écoute du jazz et apprend à
             danser le Lindy Hop. Fous-rires, chaleur humaine et apprentissage
             garanti!
           </p>
-          <p class="text-left mt-8">
-            <a
-              class="bg-teal-800 hover:bg-teal-600 text-white text-lg text-yellow-500 py-2 px-4 mr-2"
-              href={weeklyCoursesUrl}
-            >
-              En savoir plus
-            </a>
+        </a>
+        <a
+          href={weeklyPracticeUrl}
+          class="flex-1 md:basis-[45%] border-4 border-fuchsia-500 m-6 p-6 bg-fuchsia-800 hover:bg-fuchsia-600"
+        >
+          <h1 class="text-2xl font-bold mb-4 oswald">La pratique</h1>
+          <p class="text-left mb-3">Apprendre des routines swing.</p>
+          <p class="text-left mb-3">
+            Entraîner nos pas de base sur tous les tempos.
           </p>
-        </div>
-        <div class="flex-1 border-4 border-yellow-500 m-6 p-4">
+        </a>
+        <div
+          class="flex-1 md:basis-[45%] md:max-w-[60%] border-4 border-yellow-500 m-6 p-4 bg-yellow-800"
+        >
           <h1 class="text-2xl font-bold mb-4 oswald">Les ateliers</h1>
           <p class="text-left mb-3">
             Des weekends intenses, de Lindy Hop et Solo Jazz, avec des profs
@@ -65,6 +76,10 @@ const weeklyCoursesUrl = getRelativeLocaleUrl(
           </p>
           <p class="text-left mb-3">
             Une occasion en or pour découvrir, ou aller plus loin.
+          </p>
+
+          <p class="text-center mb-3 bg-yellow-600 p-2">
+            🚧 Nous migrons notre site, merci de ta patience.
           </p>
         </div>
       </div>

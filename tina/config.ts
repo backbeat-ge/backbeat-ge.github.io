@@ -132,13 +132,6 @@ export default defineConfig({
             },
           },
           {
-            type: "reference",
-            collections: ["place"],
-            name: "place",
-            label: "Place",
-            required: true,
-          },
-          {
             type: "image",
             name: "bannerSrc",
             label: "Banner image",
@@ -152,6 +145,20 @@ export default defineConfig({
             ui: {
               component: "color",
             },
+          },
+          {
+            type: "object",
+            name: "placeList",
+            label: "Places",
+            list: true,      
+            fields: [
+              {
+                type: 'reference',
+                collections: ['place'],
+                label: 'Place',
+                name: 'place',
+              },
+            ]
           },
           {
             type: "rich-text",

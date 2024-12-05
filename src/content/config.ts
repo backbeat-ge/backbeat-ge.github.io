@@ -25,7 +25,11 @@ const courseCollection = defineCollection({
     title: z.string(),
     fromDate: z.date(),
     toDate: z.date(),
-    place: z.string(),
+    placeList: z.array(
+      z.object({
+        place: z.string()
+      })
+    ).optional(),
     registrationUrl: z.string().url().optional(),
     bannerSrc: z.string().optional(),
     frontColor: z.string().optional(),

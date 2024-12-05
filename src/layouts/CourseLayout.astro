@@ -1,10 +1,25 @@
 ---
+import { getEntry } from "astro:content";
 import tinycolor from "tinycolor2";
 import Layout from "./Layout.astro";
 
 const {
-  frontmatter: { title, frontColor, bannerSrc, registrationUrl },
+  frontmatter: { title, frontColor, bannerSrc, registrationUrl, placeList },
 } = Astro.props;
+
+const resolvedPlaceList = placeList
+  ? await Promise.all(
+      placeList.map(async ({ place }) => {
+        // Extract slug from Tina's full path
+        const slug = place.split("/").pop().replace(".json", "");
+        // Get the entry using the slug
+        const placeEntry = await getEntry("places", slug);
+        return {
+          place: placeEntry.data,
+        };
+      }),
+    )
+  : null;
 
 const computedBgColor = tinycolor(frontColor).lighten(25).toString();
 ---
@@ -38,6 +53,28 @@ const computedBgColor = tinycolor(frontColor).lighten(25).toString();
         <slot />
       </div>
     </div>
+    {
+      resolvedPlaceList && (
+        <div class="p-12">
+          <div class="max-w-prose mx-auto">
+            <h2 class="text-2xl font-bold mb-6">
+              {resolvedPlaceList.length > 1 ? "Lieux" : "Lieu"}
+            </h2>
+          </div>
+          <div class="max-w-prose mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            {resolvedPlaceList.map(({ place }) => (
+              <div class="bg-white p-4 rounded-lg shadow">
+                <h3 class="font-bold text-lg mb-2">{place.name}</h3>
+                <p class="text-gray-600 mb-2">{place.address}</p>
+                {place.comment && (
+                  <p class="text-gray-500 text-sm italic">{place.comment}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
     <div class="p-12 text-center">
       <a
         style={`background-color: ${frontColor};`}
