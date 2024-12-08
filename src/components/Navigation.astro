@@ -21,15 +21,19 @@ const becomeMemberUrl = getRelativeLocaleUrl(lang, "association/become-member");
 const lindyHopUrl = getRelativeLocaleUrl(lang, "association/lindy-hop");
 const coursesUrl = getRelativeLocaleUrl(
   lang,
-  "fr" === lang ? "cours" : "courses"
+  "fr" === lang ? "cours" : "courses",
+);
+const practiceUrl = getRelativeLocaleUrl(
+  lang,
+  "fr" === lang ? "pratique" : "practice",
 );
 const eventsUrl = getRelativeLocaleUrl(
   lang,
-  "fr" === lang ? "événements" : "events"
+  "fr" === lang ? "événements" : "events",
 );
 const conditionsUrl = getRelativeLocaleUrl(
   lang,
-  "association/registration-conditions"
+  "association/registration-conditions",
 );
 ---
 
@@ -144,6 +148,11 @@ const conditionsUrl = getRelativeLocaleUrl(
         <li>
           <a class="text-stone-800 hover:text-sky-800" href={coursesUrl}
             >{t("nav.courses")}</a
+          >
+        </li>
+        <li>
+          <a class="text-stone-800 hover:text-sky-800" href={practiceUrl}
+            >{t("nav.practice")}</a
           >
         </li>
         <li>

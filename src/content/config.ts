@@ -22,25 +22,44 @@ const eventCollection = defineCollection({
 const courseCollection = defineCollection({
   type: "content",
   schema: z.object({
+    published: z.boolean(),
     title: z.string(),
     fromDate: z.date(),
     toDate: z.date(),
+    bannerSrc: z.string().optional(),
+    frontColor: z.string().optional(),
     placeList: z.array(
       z.object({
         place: z.string()
       })
     ).optional(),
     registrationUrl: z.string().url().optional(),
-    bannerSrc: z.string().optional(),
-    frontColor: z.string().optional(),
-    published: z.boolean(),
   }),
+});
+const workshopCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    published: z.boolean(),
+    title: z.string(),
+    fromDate: z.date(),
+    toDate: z.date(),
+    frontColor: z.string().optional(),
+    imageSrc: z.string().optional(),
+    placeList: z.array(
+      z.object({
+        place: z.string()
+      })
+    ).optional(),
+    registrationUrl: z.string().url().optional(),
+  }), 
 });
 const placeCollection = defineCollection({
   type: "data",
   schema: z.object({
     name: z.string(),
     address: z.string(),
+    mapLink: z.string().optional(),
+    comments: z.string().optional(),
   }),
 });
 // Export a single `collections` object to register your collection(s)
@@ -48,5 +67,6 @@ export const collections = {
   posts: postsCollection,
   events: eventCollection,
   courses: courseCollection,
+  workshops: workshopCollection,
   places: placeCollection,
 };

@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import { useTranslations } from "../../i18n/utils";
+import dalcrozeOne from "../../images/workshops/dalcroze-1.jpg";
+import dalcrozeTwo from "../../images/workshops/dalcroze-2.jpg";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col max-w-screen-lg mx-auto mb-12">
+  <div class="w-full flex items-center overflow-hidden">
+    <Image
+      src={dalcrozeOne}
+      alt="Institute Jaques Dalcroze"
+      class="h-[200px] w-auto"
+    />
+    <div class="w-full p-4 m-6">
+      <h1 class="w-full text-4xl text-center border-t-4 border-b-4 border-amber-500 py-3 mb-6 oswald">{t("workshops.title")}</h1>
+      { 'en' === lang ? (
+      <p class="mb-4">
+        Intense weekends, of Lindy Hop and Solo Jazz, with guest teachers of the
+        highest level!  
+      </p>
+      <p class="mb-4">
+        Adapted to all levels, from beginner to experienced.
+      </p>
+      <p class="mb-4">
+        An opportunity to discover, or go further.
+      </p>
+      ) : (
+        <p class="mb-4">
+          Des weekends intenses, de Lindy Hop et Solo Jazz, avec des profs invité.e.s de ouf!
+        </p>
+        <p class="mb-4">
+          Des cours adaptés à tous les niveaux, de débutant à expérimenté.
+        </p>
+        <p class="mb-4">
+          Une occasion en or pour découvrir, ou aller plus loin.
+        </p>
+      )
+    }
+    </div>
+    <Image
+      src={dalcrozeTwo}
+      alt="Institute Jaques Dalcroze"
+      class="h-[200px] w-auto"
+    />
+  </div>
+</div>

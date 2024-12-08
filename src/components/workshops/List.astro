@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+import { generateRelativeUrl } from "../../utils";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const allWorkshops = await getCollection(
+  "workshops",
+  ({ id, data: { published } }) => {
+    return id.startsWith(lang) && published;
+  },
+);
+
+allWorkshops.sort((a, b) => {
+  const dateA = new Date(a.data.fromDate);
+  const dateB = new Date(b.data.fromDate);
+
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<div class="max-w-screen-lg mx-auto flex flex-wrap justify-center gap-4">
+  {
+    allWorkshops.length === 0 ? (
+      <p class="text-center text-white">
+        <em>No workshops are currently programmed.</em>
+      </p>
+    ) : (
+      allWorkshops.map((workshop) => (
+        <a
+          href={generateRelativeUrl(`/workshops/${workshop.slug}/`)}
+          class="flex flex-col w-full md:w-[calc(50%-1rem)] bg-amber-500 p-2 pb-0 my-6"
+        >
+          <img
+            src={workshop.data.imageSrc}
+            alt="Bannière du cours actuel"
+            class="w-full object-cover"
+          />
+          <div class="flex flex-col md:flex-row text-xl text-white">
+            <span class="flex-1 text-left p-2">{workshop.data.title}</span>
+            <span class="flex-1 md:text-right p-2">
+              Du {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} au{" "}
+              {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
+            </span>
+          </div>
+        </a>
+      ))
+    )
+  }
+</div>

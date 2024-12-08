@@ -107,6 +107,11 @@ export default defineConfig({
         path: "src/content/courses",
         fields: [
           {
+            type: "boolean",
+            name: "published",
+            label: "Published",
+          },
+          {
             type: "string",
             name: "title",
             label: "Title",
@@ -147,6 +152,12 @@ export default defineConfig({
             },
           },
           {
+            type: "rich-text",
+            name: "body",
+            label: "Description",
+            isBody: true,
+          },
+          {
             type: "object",
             name: "placeList",
             label: "Places",
@@ -161,21 +172,88 @@ export default defineConfig({
             ]
           },
           {
+            type: "string",
+            name: "registrationUrl",
+            label: "Registration URL",
+            required: false,
+          },
+        ],
+      },
+      {
+        name: "workshop",
+        label: "Workshops",
+        path: "src/content/workshops",
+        fields: [
+          {
+            type: "boolean",
+            name: "published",
+            label: "Published",
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "datetime",
+            name: "fromDate",
+            label: "Starting date",
+            required: true,
+            ui: {
+              utc: true,
+            },
+          },
+          {
+            type: "datetime",
+            name: "toDate",
+            label: "End date",
+            required: true,
+            ui: {
+              utc: true,
+            },
+          },
+          {
+            type: "image",
+            name: "imageSrc",
+            label: "Cover image",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "frontColor",
+            label: "Front color",
+            required: false,
+            ui: {
+              component: "color",
+            },
+          },
+          {
             type: "rich-text",
             name: "body",
             label: "Description",
             isBody: true,
           },
           {
+            type: "object",
+            name: "placeList",
+            label: "Places",
+            list: true,      
+            fields: [
+              {
+                type: 'reference',
+                collections: ['place'],
+                label: 'Place',
+                name: 'place',
+              },
+            ]
+          },
+          {
             type: "string",
             name: "registrationUrl",
             label: "Registration URL",
             required: false,
-          },
-          {
-            type: "boolean",
-            name: "published",
-            label: "Published",
           },
         ],
       },
@@ -200,6 +278,12 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "string",
+            name: "mapLink",
+            label: "Map link",
+            required: false,
           },
           {
             type: "rich-text",

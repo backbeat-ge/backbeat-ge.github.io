@@ -11,9 +11,9 @@ const weeklyCoursesUrl = getRelativeLocaleUrl(
   lang,
   "en" === lang ? "classes/weekly" : "cours/hebdomadaires",
 );
-const weeklyPracticeUrl = getRelativeLocaleUrl(
+const workshopsUrl = getRelativeLocaleUrl(
   lang,
-  "en" === lang ? "classes/practice" : "cours/pratique",
+  "en" === lang ? "classes/workshops" : "cours/ateliers",
 );
 ---
 
@@ -39,12 +39,12 @@ const weeklyPracticeUrl = getRelativeLocaleUrl(
       <h1 class="text-4xl font-bold mb-6 oswald">
         Tu cherches des cours de danses jazz? Lindy Hop? Solo Jazz?
       </h1>
-      <h2 class="text-xl mb-6">On te propose trois formats!</h2>
+      <h2 class="text-xl mb-6">On te propose deux formats!</h2>
 
       <div class="flex flex-col md:flex-row md:flex-wrap md:justify-center">
         <a
           href={weeklyCoursesUrl}
-          class="flex-1 md:basis-[45%] border-4 border-teal-500 m-6 p-6 bg-teal-800 hover:bg-teal-600"
+          class="flex-1 md:basis-[45%] border-4 border-lime-500 m-6 p-6 bg-lime-800 hover:bg-lime-600"
         >
           <h1 class="text-2xl font-bold mb-4 oswald">Les cours hebdos</h1>
           <p class="text-left mb-3">
@@ -54,19 +54,10 @@ const weeklyPracticeUrl = getRelativeLocaleUrl(
           </p>
         </a>
         <a
-          href={weeklyPracticeUrl}
-          class="flex-1 md:basis-[45%] border-4 border-fuchsia-500 m-6 p-6 bg-fuchsia-800 hover:bg-fuchsia-600"
+          href={workshopsUrl}
+          class="flex-1 md:basis-[45%] border-4 border-amber-500 m-6 p-4 bg-amber-800 hover:bg-amber-600"
         >
-          <h1 class="text-2xl font-bold mb-4 oswald">La pratique</h1>
-          <p class="text-left mb-3">Apprendre des routines swing.</p>
-          <p class="text-left mb-3">
-            Entraîner nos pas de base sur tous les tempos.
-          </p>
-        </a>
-        <div
-          class="flex-1 md:basis-[45%] md:max-w-[60%] border-4 border-yellow-500 m-6 p-4 bg-yellow-800"
-        >
-          <h1 class="text-2xl font-bold mb-4 oswald">Les ateliers</h1>
+          <h1 class="text-2xl font-bold mb-4 oswald">Ateliers</h1>
           <p class="text-left mb-3">
             Des weekends intenses, de Lindy Hop et Solo Jazz, avec des profs
             invité.e.s de ouf!
@@ -77,11 +68,7 @@ const weeklyPracticeUrl = getRelativeLocaleUrl(
           <p class="text-left mb-3">
             Une occasion en or pour découvrir, ou aller plus loin.
           </p>
-
-          <p class="text-center mb-3 bg-yellow-600 p-2">
-            🚧 Nous migrons notre site, merci de ta patience.
-          </p>
-        </div>
+        </a>
       </div>
     </div>
   </div>

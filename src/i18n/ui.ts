@@ -17,6 +17,7 @@ export const ui = {
     "nav.association": "L'association",
     "nav.charte": "Notre charte",
     "nav.courses": "Cours",
+    "nav.practice": "Pratique",
     "nav.become-member": "Devenir membre",
     "nav.lindy-hop": "Lindy Hop",
     "nav.registration-conditions": "Conditions d'inscription",
@@ -24,6 +25,7 @@ export const ui = {
     "more-soon": "À suivre…",
     "more-soon.help": "Nous migrons notre site, merci de ta patience.",
     "footer.fast-access": "Accès rapide",
+    "workshops.title": "Ateliers",
   },
   en: {
     "alt.logo": "Our association's logo",
@@ -36,6 +38,7 @@ export const ui = {
     "nav.association": "The association",
     "nav.charte": "Our charter",
     "nav.courses": "Courses",
+    "nav.practice": "Practice",
     "nav.become-member": "Become member",
     "nav.lindy-hop": "Lindy Hop",
     "nav.registration-conditions": "Registration conditions",
@@ -43,5 +46,6 @@ export const ui = {
     "more-soon": "More soon…",
     "more-soon.help": "We are migrating our website, please be patient.",
     "footer.fast-access": "Fast access",
+    "workshops.title": "Workshops",
   },
 } as const;

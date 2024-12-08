@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://backbeat-ge.github.io',
+  site: process.env.SITE_URL || 'http://localhost:4321',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],

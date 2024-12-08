@@ -1,0 +1,17 @@
+---
+import WorkshopsHeader from "../components/workshops/Header.astro";
+import WorkshopsList from "../components/workshops/List.astro";
+import { useTranslations } from "../i18n/utils";
+import Layout from "./Layout.astro";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+---
+
+<Layout
+  title={t("workshops.title") + " | Backbeat"}
+  class="bg-pink-800 text-amber-500"
+>
+  <WorkshopsHeader />
+  <WorkshopsList />
+</Layout>

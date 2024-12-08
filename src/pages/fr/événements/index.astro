@@ -9,16 +9,23 @@ const allEvents = await getCollection(
   "events",
   ({ id, data: { published } }) => {
     return id.startsWith(lang) && published;
-  }
+  },
 );
 ---
 
 <Layout title="Cours | Backbeat" class="bg-violet-500">
-  <div class="w-full bg-sky-600 text-center text-white py-24">
+  <div class="w-full text-center text-white py-24">
     <div class="max-w-screen-lg mx-auto">
       <h1 class="text-4xl font-bold mb-6 oswald">Nos prochains événements</h1>
     </div>
     <div class="max-w-screen-lg mx-auto grid grid-cols-3 gap-4">
+      {
+        allEvents.length === 0 && (
+          <div class="col-span-3 text-xl italic mt-5">
+            Nous n'avons aucun événement programmé pour l'instant.
+          </div>
+        )
+      }
       {
         allEvents.map((event) => (
           <div>

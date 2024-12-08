@@ -10,7 +10,17 @@ const t = useTranslations(lang);
 
 const classesUrl = getRelativeLocaleUrl(
   lang,
-  "fr" === lang ? "cours" : "courses"
+  "fr" === lang ? "cours" : "courses",
+);
+
+const practiceUrl = getRelativeLocaleUrl(
+  lang,
+  "fr" === lang ? "pratique" : "practice",
+);
+
+const eventsUrl = getRelativeLocaleUrl(
+  lang,
+  "fr" === lang ? "événements" : "events",
 );
 ---
 
@@ -20,27 +30,44 @@ const classesUrl = getRelativeLocaleUrl(
     alt={"fr" === lang
       ? "Danse au Parc des Bastions"
       : "Dancing at Parc des Bastions"}
-    class="w-full mt-[-120px] object-none lg:object-cover"
+    class="w-full min-h-[540px] mt-[-120px] object-none lg:object-cover object-left"
   />
 
-  <div class="absolute top-0 left-0 p-6 flex items-center">
-    <div>
+  <div
+    class="w-full absolute top-0 left-0 h-full p-6 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start"
+  >
+    <div class="bg-black/40 md:bg-transparent p-3 mb-4 md:p-0 md:mb-0">
       <Image src={whiteLogoImage} alt="Our logo" class="h-32 w-auto" />
     </div>
-    <div class="text-center">
-      <h1 class="text-4xl text-white font-bold px-4">Ensemble, en swing!</h1>
-      <hr class="h-1 my-2 bg-white border-0" />
 
-      <a
-        class="bg-rose-800 hover:bg-rose-600 text-white text-lg text-yellow-500 py-2 px-4 mr-2"
-        href={classesUrl}
-      >
-        {t("nav.courses")}
-      </a>
-      <!-- <button
-        class="bg-rose-800 hover:bg-rose-600 text-white text-lg text-yellow-500 py-2 px-4 mr-2"
-        >Événements</button
-      > -->
+    <div class="w-auto">
+      <div class="mb-4 md:mb-0">
+        <h1 class="text-4xl text-white text-center font-bold px-4">
+          Ensemble, en swing!
+        </h1>
+        <hr class="h-1 my-2 bg-white border-0" />
+      </div>
+
+      <div class="w-full flex flex-row flex-wrap justify-center gap-2">
+        <a
+          class="bg-lime-800 hover:bg-lime-600 text-white text-lg text-yellow-500 py-2 px-4"
+          href={classesUrl}
+        >
+          {t("nav.courses")}
+        </a>
+        <a
+          class="bg-rose-800 hover:bg-rose-600 text-white text-lg text-yellow-500 py-2 px-4"
+          href={practiceUrl}
+        >
+          {t("nav.practice")}
+        </a>
+        <a
+          class="bg-sky-800 hover:bg-sky-600 text-white text-lg text-yellow-500 py-2 px-4"
+          href={eventsUrl}
+        >
+          {t("nav.events")}
+        </a>
+      </div>
     </div>
   </div>
 
