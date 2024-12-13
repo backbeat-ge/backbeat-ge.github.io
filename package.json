@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "tinacms dev --verbose -c \"astro dev --host\"",
+    "dev": "tinacms dev --verbose -c \"astro dev\"",
+    "dev:docker": "tinacms dev --verbose -c \"astro dev --host 0.0.0.0\"",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",

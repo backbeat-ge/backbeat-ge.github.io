@@ -1,75 +1,75 @@
 ---
 import { Image } from "astro:assets";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import dalcrozePhoto from "../../../images/courses/dalcroze.jpg";
-import grottesPhoto from "../../../images/courses/grottes-1.jpg";
-import whiteysPhoto from "../../../images/courses/whiteys-lindy-hoppers.jpg";
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+import headerImage from "../../../images/courses/grottes-2.jpg";
 import Layout from "../../../layouts/Layout.astro";
+import { generateRelativeUrl } from "../../../utils";
 
 const lang = Astro.currentLocale as "fr" | "en";
-const weeklyCoursesUrl = getRelativeLocaleUrl(
-  lang,
-  "en" === lang ? "classes/weekly" : "cours/hebdomadaires",
+const allCourses = await getCollection(
+  "courses",
+  ({ id, data: { published } }) => {
+    return id.startsWith(lang) && published;
+  },
 );
-const workshopsUrl = getRelativeLocaleUrl(
-  lang,
-  "en" === lang ? "classes/workshops" : "cours/ateliers",
-);
+
+allCourses.sort((a, b) => {
+  const dateA = new Date(a.data.fromDate);
+  const dateB = new Date(b.data.fromDate);
+
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
-<Layout title="Cours | Backbeat">
-  <div class="flex items-center justify-center h-full">
-    <div class="flex items-start max-h-[240px] overflow-hidden">
-      <Image src={dalcrozePhoto} alt="Dalcroze" class="w-1/3 object-cover" />
+<Layout title="Cours | Backbeat" class="bg-yellow-500">
+  <div class="flex flex-col max-w-screen-lg mx-auto bg-stone-100 my-12">
+    <div class="flex items-center max-h-[240px] overflow-hidden">
       <Image
-        src={whiteysPhoto}
-        alt="Whitey's Lindy Hoppers"
-        class="w-1/3 object-cover"
-      />
-      <Image
-        src={grottesPhoto}
+        src={headerImage}
         alt="École des Grottes"
-        class="w-1/3 object-cover"
+        class="w-full object-cover"
       />
     </div>
-  </div>
-
-  <div class="w-full bg-sky-600 text-center text-white py-24">
-    <div class="max-w-screen-lg mx-auto">
-      <h1 class="text-4xl font-bold mb-6 oswald">
-        Tu cherches des cours de danses jazz? Lindy Hop? Solo Jazz?
-      </h1>
-      <h2 class="text-xl mb-6">On te propose deux formats!</h2>
-
-      <div class="flex flex-col md:flex-row md:flex-wrap md:justify-center">
-        <a
-          href={weeklyCoursesUrl}
-          class="flex-1 md:basis-[45%] border-4 border-lime-500 m-6 p-6 bg-lime-800 hover:bg-lime-600"
-        >
-          <h1 class="text-2xl font-bold mb-4 oswald">Les cours hebdos</h1>
-          <p class="text-left mb-3">
-            Semaine après semaine, tisse des liens, écoute du jazz et apprend à
-            danser le Lindy Hop. Fous-rires, chaleur humaine et apprentissage
-            garanti!
-          </p>
-        </a>
-        <a
-          href={workshopsUrl}
-          class="flex-1 md:basis-[45%] border-4 border-amber-500 m-6 p-4 bg-amber-800 hover:bg-amber-600"
-        >
-          <h1 class="text-2xl font-bold mb-4 oswald">Ateliers</h1>
-          <p class="text-left mb-3">
-            Des weekends intenses, de Lindy Hop et Solo Jazz, avec des profs
-            invité.e.s de ouf!
-          </p>
-          <p class="text-left mb-3">
-            Des cours adaptés à tous les niveaux, de débutant à expérimenté.
-          </p>
-          <p class="text-left mb-3">
-            Une occasion en or pour découvrir, ou aller plus loin.
-          </p>
-        </a>
-      </div>
+    <div class="p-12">
+      <h1 class="text-4xl mb-6 oswald">Cours hebdomadaires</h1>
+      <p class="mb-4">
+        Depuis 6 ans maintenant, Backbeat propose des cours hebdomadaires - pour
+        découvrir le Lindy Hop semaine après semaine; pour forger un groupe
+        sympa; pour rire ensemble; pour entrer peu à peu dans la culture des
+        danses jazz.
+      </p>
+      <p class="mb-4">
+        Nos cours hebdomadaires ont lieu à l'Ecole des Grottes.
+      </p>
+      <p class="mb-4">
+        En géneral, nos cours sont partagés par différents professeurs, qui
+        partagent les valeurs de Backbeat: chaleur humaine, intérêt pour la
+        culture jazz, engagement décidé pour que tout le monde se sente
+        bienvenu·e·x.
+      </p>
     </div>
   </div>
+
+  {
+    allCourses.map((activeCourse) => (
+      <a
+        href={generateRelativeUrl(`/courses/${activeCourse.slug}/`)}
+        class="flex flex-col max-w-screen-lg mx-auto mt-6 bg-yellow-300 p-2 pb-0 my-12"
+      >
+        <img
+          src={activeCourse.data.bannerSrc}
+          alt="Bannière du cours actuel"
+          class="w-full object-cover"
+        />
+        <div class="flex flex-row text-xl">
+          <span class="flex-1 text-left p-2">{activeCourse.data.title}</span>
+          <span class="flex-1 text-right p-2">
+            Du {format(new Date(activeCourse.data.fromDate), "dd.MM.yyyy")} au{" "}
+            {format(new Date(activeCourse.data.toDate), "dd.MM.yyyy")}
+          </span>
+        </div>
+      </a>
+    ))
+  }
 </Layout>
