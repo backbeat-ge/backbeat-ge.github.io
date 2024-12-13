@@ -1,17 +1,17 @@
 ---
-import WorkshopsHeader from "../components/workshops/Header.astro";
-import WorkshopsList from "../components/workshops/List.astro";
 import { useTranslations } from "../i18n/utils";
 import Layout from "./Layout.astro";
+
+import WorkshopsFooter from "../components/workshops/Footer.astro";
+import WorkshopsHeader from "../components/workshops/Header.astro";
+import WorkshopsList from "../components/workshops/List.astro";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 ---
 
-<Layout
-  title={t("workshops.title") + " | Backbeat"}
-  class="bg-pink-800 text-amber-500"
->
+<Layout title={t("workshops.title") + " | Backbeat"} class="bg-pink-400">
   <WorkshopsHeader />
   <WorkshopsList />
+  <WorkshopsFooter />
 </Layout>

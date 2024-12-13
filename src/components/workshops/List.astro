@@ -19,7 +19,7 @@ allWorkshops.sort((a, b) => {
 });
 ---
 
-<div class="max-w-screen-lg mx-auto flex flex-wrap justify-center gap-4">
+<div class="max-w-screen-lg mx-auto flex flex-wrap justify-center gap-4 p-4">
   {
     allWorkshops.length === 0 ? (
       <p class="text-center text-white">
@@ -29,7 +29,7 @@ allWorkshops.sort((a, b) => {
       allWorkshops.map((workshop) => (
         <a
           href={generateRelativeUrl(`/workshops/${workshop.slug}/`)}
-          class="flex flex-col w-full md:w-[calc(50%-1rem)] bg-amber-500 p-2 pb-0 my-6"
+          class="flex flex-col w-full md:w-[calc(50%-1rem)] bg-pink-600 p-2 pb-0 my-6"
         >
           <img
             src={workshop.data.imageSrc}
