@@ -36,7 +36,7 @@ const { title, class: classes, style: customStyle } = Astro.props;
   </head>
   <body class="min-h-screen flex flex-col bg-sky-50">
     <Navigation />
-    <div class={`flex-grow ${classes}`} style={customStyle}>
+    <div class={`flex flex-col flex-grow ${classes}`} style={customStyle}>
       <slot />
     </div>
     <Footer />

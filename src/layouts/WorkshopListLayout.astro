@@ -12,6 +12,8 @@ const t = useTranslations(lang);
 
 <Layout title={t("workshops.title") + " | Backbeat"} class="bg-pink-400">
   <WorkshopHeader />
-  <WorkshopList />
+  <div class="flex flex-grow">
+    <WorkshopList />
+  </div>
   <WorkshopDecoBottom />
 </Layout>
