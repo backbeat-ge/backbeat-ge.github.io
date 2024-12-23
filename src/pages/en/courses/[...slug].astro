@@ -1,13 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 
-import WorkshopLayout from "../../../layouts/workshops/WorkshopSingleLayout.astro";
+import CourseSingleLayout from "../../../layouts/courses/CourseSingleLayout.astro";
 
 export async function getStaticPaths() {
-  const workshopEntries = await getCollection("workshops");
+  const courseEntries = await getCollection("courses");
 
-  return workshopEntries
-    .filter((entry) => entry.slug.startsWith("fr"))
+  return courseEntries
+    .filter((entry) => entry.slug.startsWith("en"))
     .map((entry) => {
       const [lang, ...slug] = entry.slug.split("/");
       return {
@@ -21,6 +21,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<WorkshopLayout frontmatter={entry.data}>
+<CourseSingleLayout frontmatter={entry.data}>
   <Content />
-</WorkshopLayout>
+</CourseSingleLayout>

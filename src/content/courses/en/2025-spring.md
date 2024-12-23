@@ -1,12 +1,12 @@
 ---
+published: false
 title: Spring 2025
 fromDate: 2025-02-02T00:00:00.000Z
 toDate: 2025-03-27T00:00:00.000Z
+frontColor: '#E78888'
 placeList:
   - place: src/content/places/ecole-hugo-de-senger.json
   - place: src/content/places/ecole-des-grottes.json
-frontColor: '#E78888'
-published: true
 ---
 
 This semester we offer you two great courses again!

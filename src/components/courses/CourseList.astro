@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const allCourses = await getCollection(
+  "courses",
+  ({ id, data: { published } }) => {
+    return id.startsWith(lang) && published;
+  },
+);
+
+allCourses.sort((a, b) => {
+  const dateA = new Date(a.data.fromDate);
+  const dateB = new Date(b.data.fromDate);
+
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<div
+  class="mx-auto flex w-full max-w-screen-lg flex-grow flex-wrap items-center justify-center gap-6 py-12 px-4"
+>
+  {
+    allCourses.length === 0 ? (
+      <p class="text-center text-lime-800">
+        {"en" === lang ? (
+          <em>No courses are currently programmed.</em>
+        ) : (
+          <em>Aucun cours n'est actuellement programmé.</em>
+        )}
+      </p>
+    ) : (
+      allCourses.map((course) => (
+        <a
+          href={`${course.slug.split("/").slice(1).join("/")}`}
+          class="flex flex-col w-full pb-0 border-8 border-lime-600"
+          style={`background-color: ${course.data.frontColor}`}
+        >
+          <img
+            src={course.data.bannerSrc}
+            alt="Bannière du cours actuel"
+            class="w-full object-cover"
+          />
+          <div class="flex flex-col text-white">
+            <span class="flex-1 text-xl p-2 font-bold">
+              {course.data.title}
+            </span>
+            <span class="flex-1 p-2 pt-0">
+              Du {format(new Date(course.data.fromDate), "dd.MM.yyyy")} au{" "}
+              {format(new Date(course.data.toDate), "dd.MM.yyyy")}
+            </span>
+          </div>
+        </a>
+      ))
+    )
+  }
+</div>

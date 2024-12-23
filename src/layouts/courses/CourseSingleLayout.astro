@@ -1,7 +1,9 @@
 ---
 import { getEntry } from "astro:content";
 import tinycolor from "tinycolor2";
-import Layout from "./Layout.astro";
+import CourseDecoBottom from "../../components/courses/CourseDecoBottom.astro";
+import CourseDecoTop from "../../components/courses/CourseDecoTop.astro";
+import Layout from "../Layout.astro";
 
 const {
   frontmatter: { title, frontColor, bannerSrc, registrationUrl, placeList },
@@ -9,7 +11,7 @@ const {
 
 const resolvedPlaceList = placeList
   ? await Promise.all(
-      placeList.map(async ({ place }) => {
+      placeList.map(async ({ place }: { place: any }) => {
         // Extract slug from Tina's full path
         const slug = place.split("/").pop().replace(".json", "");
         // Get the entry using the slug
@@ -21,14 +23,16 @@ const resolvedPlaceList = placeList
     )
   : null;
 
-const computedBgColor = tinycolor(frontColor).lighten(25).toString();
+const pageColor = tinycolor(frontColor).lighten(55).toString();
 ---
 
-<Layout
-  title={`${title} | Backbeat`}
-  style={`background-color: ${computedBgColor};`}
->
-  <div class="flex flex-col max-w-screen-lg mx-auto bg-stone-100 m-12">
+<Layout title={`${title} | Backbeat`} class="bg-lime-400">
+  <CourseDecoTop />
+
+  <div
+    class="flex flex-col max-w-screen-lg mx-auto m-12 border-8 border-lime-600"
+    style={`background-color: ${pageColor};`}
+  >
     <div style={`background-color: ${frontColor}`}>
       <h1 class="text-4xl p-4 text-center text-white oswald">
         {title}
@@ -75,12 +79,15 @@ const computedBgColor = tinycolor(frontColor).lighten(25).toString();
         </div>
       )
     }
-    <div class="p-12 text-center">
-      <a
-        style={`background-color: ${frontColor};`}
-        class="py-2 px-4 text-white"
-        href={registrationUrl}>Je m'inscris!</a
-      >
+    <div class="p-12 w-full flex">
+      <div class="flex flex-grow justify-center items-center">
+        <a
+          style={`background-color: ${frontColor};`}
+          class="p-8 text-xl text-white rounded-lg"
+          href={registrationUrl}>Je m'inscris!</a
+        >
+      </div>
     </div>
   </div>
+  <CourseDecoBottom />
 </Layout>

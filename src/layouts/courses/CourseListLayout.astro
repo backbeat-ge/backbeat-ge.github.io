@@ -1,0 +1,18 @@
+---
+import CourseDecoBottom from "../../components/courses/CourseDecoBottom.astro";
+import CourseList from "../../components/courses/CourseList.astro";
+import CourseListHeader from "../../components/courses/CourseListHeader.astro";
+import { useTranslations } from "../../i18n/utils";
+import Layout from "../Layout.astro";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+---
+
+<Layout title={t("courses.title") + " | Backbeat"} class="bg-lime-400">
+  <CourseListHeader />
+  <div class="flex flex-grow">
+    <CourseList />
+  </div>
+  <CourseDecoBottom />
+</Layout>
