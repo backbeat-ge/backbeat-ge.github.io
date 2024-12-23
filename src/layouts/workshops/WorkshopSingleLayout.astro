@@ -1,0 +1,98 @@
+---
+import { getEntry } from "astro:content";
+import tinycolor from "tinycolor2";
+import WorkshopDecoBottom from "../../components/workshops/WorkshopDecoBottom.astro";
+import WorkshopDecoTop from "../../components/workshops/WorkshopDecoTop.astro";
+import Layout from "../Layout.astro";
+
+const {
+  frontmatter: { title, frontColor, imageSrc, registrationUrl, placeList },
+} = Astro.props;
+
+const resolvedPlaceList = placeList
+  ? await Promise.all(
+      placeList.map(async ({ place }: { place: any }) => {
+        // Extract slug from Tina's full path
+        const slug = place.split("/").pop().replace(".json", "");
+        // Get the entry using the slug
+        const placeEntry = await getEntry("places", slug);
+        return {
+          place: placeEntry.data,
+        };
+      }),
+    )
+  : null;
+
+const ligtherFrontColor = tinycolor(frontColor).lighten(40).toString();
+const ligtherBgColor = tinycolor(frontColor).lighten(55).toString();
+---
+
+<Layout title={`${title} | Backbeat`} class="bg-pink-400">
+  <WorkshopDecoTop />
+
+  <div
+    class="flex flex-wrap max-w-screen-lg mx-auto m-12"
+    style={`background-color: ${ligtherBgColor}; border-color: ${ligtherFrontColor}; border-width: 12px;`}
+  >
+    <div style={`background-color: ${frontColor}`} class="w-full">
+      <h1 class="text-4xl p-4 text-center text-white oswald">
+        {title}
+      </h1>
+    </div>
+    <div class="flex items-start overflow-hidden w-full md:w-1/2">
+      <img
+        src={imageSrc}
+        alt="Bannière du cours actuel"
+        class="w-full object-cover"
+      />
+    </div>
+    <div class="p-8 w-full md:w-1/2">
+      <div
+        class="prose max-w-prose mx-auto prose-headers:font-bold
+      prose-h1:text-3xl prose-h1:text-center prose-h1:uppercase
+      prose-h2:text-2xl prose-h2:font-bold prose-h1:uppercase
+      prose-h3:text-xl prose-h2:font-bold prose-h1:uppercase
+      prose-p:text-justify
+      prose-li:my-0"
+      >
+        <slot />
+      </div>
+    </div>
+    <div class="p-8 w-full md:w-1/2">
+      {
+        resolvedPlaceList && (
+          <div class="p-12">
+            <div class="max-w-prose mx-auto">
+              <h2 class="text-2xl font-bold mb-6">
+                {resolvedPlaceList.length > 1 ? "Lieux" : "Lieu"}
+              </h2>
+            </div>
+            <div
+              class={`max-w-prose mx-auto grid grid-cols-1 ${resolvedPlaceList.length > 1 ? "md:grid-cols-2" : ""} gap-6`}
+            >
+              {resolvedPlaceList.map(({ place }) => (
+                <div class="bg-white p-4 rounded-lg shadow">
+                  <h3 class="font-bold text-lg mb-2">{place.name}</h3>
+                  <p class="text-gray-600 mb-2">{place.address}</p>
+                  {place.comment && (
+                    <p class="text-gray-500 text-sm italic">{place.comment}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+    <div class="p-12 w-full flex md:w-1/2">
+      <div class="flex flex-grow justify-center items-center">
+        <a
+          style={`background-color: ${frontColor};`}
+          class="p-8 text-xl text-white rounded-lg"
+          href={registrationUrl}>Je m'inscris!</a
+        >
+      </div>
+    </div>
+  </div>
+  <WorkshopDecoBottom />
+</Layout>

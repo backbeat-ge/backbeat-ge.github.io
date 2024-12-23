@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
-import WorkshopLayout from "../../../layouts/WorkshopLayout.astro";
+import WorkshopLayout from "../../../layouts/workshops/WorkshopSingleLayout.astro";
 
 export async function getStaticPaths() {
   const workshopEntries = await getCollection("workshops");
