@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+
+import WorkshopSingleLayout from "../../../layouts/workshops/WorkshopSingleLayout.astro";
+
+export async function getStaticPaths() {
+  const workshopEntries = await getCollection("workshops");
+
+  return workshopEntries
+    .filter((entry) => entry.slug.startsWith("en"))
+    .map((entry) => {
+      const [lang, ...slug] = entry.slug.split("/");
+      return {
+        params: { lang, slug: slug.join("/") || undefined },
+        props: { entry },
+      };
+    });
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<WorkshopSingleLayout frontmatter={entry.data}>
+  <Content />
+</WorkshopSingleLayout>

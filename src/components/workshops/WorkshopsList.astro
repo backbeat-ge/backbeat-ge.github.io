@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import { format } from "date-fns";
-import { generateRelativeUrl } from "../../utils";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const allWorkshops = await getCollection(
@@ -34,17 +33,20 @@ allWorkshops.sort((a, b) => {
     ) : (
       allWorkshops.map((workshop) => (
         <a
-          href={generateRelativeUrl(`/workshops/${workshop.slug}/`)}
-          class="flex flex-col w-full md:w-[calc(50%-1rem)] bg-pink-600 p-2 pb-0 my-6"
+          href={`${workshop.slug.split("/").slice(1).join("/")}`}
+          class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8 border-pink-600"
+          style={`background-color: ${workshop.data.frontColor}`}
         >
           <img
             src={workshop.data.imageSrc}
             alt="Bannière du cours actuel"
             class="w-full object-cover"
           />
-          <div class="flex flex-col md:flex-row text-xl text-white">
-            <span class="flex-1 text-left p-2">{workshop.data.title}</span>
-            <span class="flex-1 md:text-right p-2">
+          <div class="flex flex-col text-white">
+            <span class="flex-1 text-xl p-2 font-bold">
+              {workshop.data.title}
+            </span>
+            <span class="flex-1 p-2 pt-0">
               Du {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} au{" "}
               {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
             </span>

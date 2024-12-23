@@ -3,16 +3,20 @@ import { getCollection } from "astro:content";
 
 import WorkshopLayout from "../../../layouts/workshops/WorkshopSingleLayout.astro";
 
+const lang = Astro.currentLocale as "fr" | "en";
+
 export async function getStaticPaths() {
   const workshopEntries = await getCollection("workshops");
 
-  return workshopEntries.map((entry) => {
-    const [lang, ...slug] = entry.slug.split("/");
-    return {
-      params: { lang, slug: slug.join("/") || undefined },
-      props: { entry },
-    };
-  });
+  return workshopEntries
+    .filter((entry) => entry.slug.startsWith("fr"))
+    .map((entry) => {
+      const [lang, ...slug] = entry.slug.split("/");
+      return {
+        params: { lang, slug: slug.join("/") || undefined },
+        props: { entry },
+      };
+    });
 }
 
 const { entry } = Astro.props;

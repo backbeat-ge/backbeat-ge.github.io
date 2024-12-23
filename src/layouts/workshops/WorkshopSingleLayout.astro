@@ -23,16 +23,15 @@ const resolvedPlaceList = placeList
     )
   : null;
 
-const ligtherFrontColor = tinycolor(frontColor).lighten(40).toString();
-const ligtherBgColor = tinycolor(frontColor).lighten(55).toString();
+const pageColor = tinycolor(frontColor).lighten(55).toString();
 ---
 
 <Layout title={`${title} | Backbeat`} class="bg-pink-400">
   <WorkshopDecoTop />
 
   <div
-    class="flex flex-wrap max-w-screen-lg mx-auto m-12"
-    style={`background-color: ${ligtherBgColor}; border-color: ${ligtherFrontColor}; border-width: 12px;`}
+    class="flex flex-wrap max-w-screen-lg mx-auto m-12 border-8 border-pink-600"
+    style={`background-color: ${pageColor};`}
   >
     <div style={`background-color: ${frontColor}`} class="w-full">
       <h1 class="text-4xl p-4 text-center text-white oswald">
