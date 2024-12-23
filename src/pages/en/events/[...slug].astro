@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+
+import EventSingleLayout from "../../../layouts/events/EventSingleLayout.astro";
+
+export async function getStaticPaths() {
+  const eventEntries = await getCollection("events");
+
+  return eventEntries
+    .filter((entry) => entry.slug.startsWith("en"))
+    .map((entry) => {
+      const [lang, ...slug] = entry.slug.split("/");
+      return {
+        params: { lang, slug: slug.join("/") || undefined },
+        props: { entry },
+      };
+    });
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<EventSingleLayout frontmatter={entry.data}>
+  <Content />
+</EventSingleLayout>

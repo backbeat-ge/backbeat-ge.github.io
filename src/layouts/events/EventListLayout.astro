@@ -1,0 +1,19 @@
+---
+import { useTranslations } from "../../i18n/utils";
+import Layout from "../Layout.astro";
+
+import EventDecoBottom from "../../components/events/EventDecoBottom.astro";
+import EventList from "../../components/events/EventList.astro";
+import EventListHeader from "../../components/events/EventListHeader.astro";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+---
+
+<Layout title={t("events.title") + " | Backbeat"} class="bg-sky-400">
+  <EventListHeader />
+  <div class="flex flex-grow">
+    <EventList />
+  </div>
+  <EventDecoBottom />
+</Layout>

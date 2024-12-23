@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const allEvents = await getCollection(
+  "events",
+  ({ id, data: { published } }) => {
+    return id.startsWith(lang) && published;
+  },
+);
+
+allEvents.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<div
+  class="mx-auto flex w-full max-w-screen-lg flex-grow flex-wrap items-center justify-center gap-4 p-4"
+>
+  {
+    allEvents.length === 0 ? (
+      <p class="text-center text-white">
+        {"en" === lang ? (
+          <em>No events are currently programmed.</em>
+        ) : (
+          <em>Aucun événement n'est actuellement programmé.</em>
+        )}
+      </p>
+    ) : (
+      allEvents.map((event) => (
+        <a
+          href={`${event.slug.split("/").slice(1).join("/")}`}
+          class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8 border-sky-600 bg-sky-600"
+        >
+          <img
+            src={event.data.imageSrc}
+            alt="Event banner"
+            class="w-full object-cover"
+          />
+          <div class="flex flex-col text-white">
+            <span class="flex-1 text-xl p-2 font-bold">{event.data.title}</span>
+            <span class="flex-1 p-2 pt-0">
+              {format(new Date(event.data.date), "dd.MM.yyyy")}
+            </span>
+          </div>
+        </a>
+      ))
+    )
+  }
+</div>
