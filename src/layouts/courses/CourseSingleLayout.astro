@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 import tinycolor from "tinycolor2";
 import CourseDecoBottom from "../../components/courses/CourseDecoBottom.astro";
 import CourseDecoTop from "../../components/courses/CourseDecoTop.astro";
+import PlaceBox from "../../components/PlaceBox.astro";
 import Layout from "../Layout.astro";
 
 const {
@@ -67,13 +68,7 @@ const pageColor = tinycolor(frontColor).lighten(55).toString();
           </div>
           <div class="max-w-prose mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {resolvedPlaceList.map(({ place }) => (
-              <div class="bg-white p-4 rounded-lg shadow">
-                <h3 class="font-bold text-lg mb-2">{place.name}</h3>
-                <p class="text-gray-600 mb-2">{place.address}</p>
-                {place.comment && (
-                  <p class="text-gray-500 text-sm italic">{place.comment}</p>
-                )}
-              </div>
+              <PlaceBox place={place} />
             ))}
           </div>
         </div>

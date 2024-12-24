@@ -1,0 +1,41 @@
+---
+import FontAwesomeIcon from "./icons/FontAwesomeIcon.astro";
+
+interface Props {
+  place: {
+    name: string;
+    address: string;
+    mapLink?: string;
+    comments?: string;
+  };
+}
+
+const { place } = Astro.props;
+---
+
+<div class="bg-white p-4 rounded-lg shadow">
+  <div class="flex flex-col">
+    <div class="flex flex-row justify-between">
+      <div>
+        <h3 class="font-bold text-lg mb-2">{place.name}</h3>
+        <p class="text-gray-600 mb-2">{place.address}</p>
+      </div>
+      {
+        place.mapLink && (
+          <div class="w-fit">
+            <a href={place.mapLink} class="text-blue-500">
+              <FontAwesomeIcon icon="location-dot" class="h-6 fill-stone-600" />
+            </a>
+          </div>
+        )
+      }
+    </div>
+    <div>
+      {
+        place.comments && (
+          <p class="text-gray-500 text-sm italic">{place.comments}</p>
+        )
+      }
+    </div>
+  </div>
+</div>

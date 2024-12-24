@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import { useTranslations } from "../../i18n/utils";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import grottesImage from "../../images/courses/grottes-1.jpg";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+---
+
+<style>
+  .workshop-slider {
+    --swiper-theme-color: #fecdd3;
+    --swiper-navigation-size: 25px;
+  }
+</style>
+
+<div class="bg-amber-800 text-amber-200 w-full">
+  <h1 class="max-w-screen-lg text-6xl p-8 oswald">
+    {t("practice.title")}
+  </h1>
+</div>
+
+<div class="bg-amber-600 w-full h-[20px]"></div>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Pagination } from "swiper/modules";
+
+  new Swiper(".workshop-slider", {
+    modules: [Pagination, Autoplay],
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>

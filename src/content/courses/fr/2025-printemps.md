@@ -1,15 +1,14 @@
 ---
+published: true
 title: Cours hebdomadaires - Février à juin 2025
 fromDate: 2025-02-28T00:00:00.000Z
 toDate: 2025-06-16T00:00:00.000Z
-placeList:
-  - { place: src/content/places/ecole-hugo-de-senger.json }
-  - { place: src/content/places/ecole-des-grottes.json }
 bannerSrc: /uploads/courses/2024-02-banner.png
-frontColor: "#8C52FF"
-registrationUrl: >-
-  https://github.com
-published: true
+frontColor: '#CF24A4'
+placeList:
+  - place: src/content/places/ecole-hugo-de-senger.json
+  - place: src/content/places/ecole-des-grottes.json
+registrationUrl: 'https://github.com'
 ---
 
 Ce semestre on te propose deux super cours!
@@ -26,23 +25,23 @@ Un cours débutant-intermédiaire en mode ELEF (everybody leads, everybody follo
 
 Le cours est conçu pour des personnes ayant déjà effectué au moins 6 mois de cours ELEF OU au moins 1 an de cours dans un seul rôle et les bases pour danser les figures suivantes dans les deux rôles :
 
-- Charleston : hand-to-hand, entrée en tandem ("chase")
-- Lindy Hop 6 counts : send out, change position, tuck turn
-- Lindy Hop 8 counts : circle, swing out
+* Charleston : hand-to-hand, entrée en tandem ("chase")
+* Lindy Hop 6 counts : send out, change position, tuck turn
+* Lindy Hop 8 counts : circle, swing out
 
 ![](/uploads/courses/2024-02-28-calendrier.png)
 
 ## Horaries
 
-- Solo jazz
-  - Mardi de 20h15 à 21h15 à l'École Hugo-de-Senger
-- Lindy hop
-  - Mercredi de 20h à 21h15 à l'[École des Grottes](https://w3w.co/utiliser.poulpe.frayer)
+* Solo jazz
+  * Mardi de 20h15 à 21h15 à l'École Hugo-de-Senger
+* Lindy hop
+  * Mercredi de 20h à 21h15 à l'[École des Grottes](https://w3w.co/utiliser.poulpe.frayer)
 
 ## Prix
 
-- Solo Jazz : 60.-
-- Lindy Hop Débutant-Intermédiaire : 240.- / 160.- études (sauf PhD), chômage,
+* Solo Jazz : 60.-
+* Lindy Hop Débutant-Intermédiaire : 240.- / 160.- études (sauf PhD), chômage,
   AVS
 
 Si tu penses que tu devrais avoir droit à une réduction, mais que tu n'es ni

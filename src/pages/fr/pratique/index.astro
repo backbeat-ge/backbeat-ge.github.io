@@ -1,32 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import headerImage from "../../../images/courses/grottes-2.jpg";
-import Layout from "../../../layouts/Layout.astro";
+import PracticeLayout from "../../../layouts/practice/PracticeLayout.astro";
 ---
 
-<Layout title="Cours | Backbeat" class="bg-yellow-500">
-  <div class="flex flex-col max-w-screen-lg mx-auto bg-stone-100 my-12">
-    <div class="flex items-center max-h-[240px] overflow-hidden">
-      <Image
-        src={headerImage}
-        alt="École des Grottes"
-        class="w-full object-cover"
-      />
-    </div>
-    <div class="p-12">
-      <h1 class="text-4xl mb-6 oswald">Pratique</h1>
-      <p class="mb-4">
-        Pour toux·te danseur·euse ultra motivé·e qui souhaite :
-        <ul>
-          <li>Connaître les routines historiques du swing</li>
-          <li>Apprendre ensemble</li>
-          <li>Progresser dans une ambiance de ouf !!!</li>
-        </ul>
-      </p>
-      <p class="mb-4">
-        Viens à l'école des Grottes, tous les mercredis de 18h30 à 19h45.
-      </p>
-      <p class="mb-4">Sans inscription.</p>
-    </div>
-  </div>
-</Layout>
+<PracticeLayout />

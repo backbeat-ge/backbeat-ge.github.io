@@ -1,0 +1,18 @@
+---
+import PracticeContent from "../../components/practice/PracticeContent.astro";
+import PracticeDecoBottom from "../../components/practice/PracticeDecoBottom.astro";
+import PracticeHeader from "../../components/practice/PracticeHeader.astro";
+import { useTranslations } from "../../i18n/utils";
+import Layout from "../Layout.astro";
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+---
+
+<Layout title={t("practice.title") + " | Backbeat"} class="bg-amber-400">
+  <PracticeHeader />
+  <div class="flex flex-grow">
+    <PracticeContent />
+  </div>
+  <PracticeDecoBottom />
+</Layout>

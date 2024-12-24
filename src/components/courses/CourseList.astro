@@ -34,8 +34,8 @@ allCourses.sort((a, b) => {
       allCourses.map((course) => (
         <a
           href={`${course.slug.split("/").slice(1).join("/")}`}
-          class="flex flex-col w-full pb-0 border-8 border-lime-600"
-          style={`background-color: ${course.data.frontColor}`}
+          class="flex flex-col w-full pb-0 border-8"
+          style={`background-color: ${course.data.frontColor}; border-color: ${course.data.frontColor}`}
         >
           <img
             src={course.data.bannerSrc}

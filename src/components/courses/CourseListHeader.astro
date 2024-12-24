@@ -5,7 +5,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import grottesImage from "../../images/courses/grottes-2.jpg";
+import grottes1Image from "../../images/courses/grottes-1.jpg";
+import grottes2Image from "../../images/courses/grottes-2.jpg";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
@@ -13,7 +14,7 @@ const t = useTranslations(lang);
 
 <style>
   .workshop-slider {
-    --swiper-theme-color: #fecdd3;
+    --swiper-theme-color: #ecfccb;
     --swiper-navigation-size: 25px;
   }
 </style>
@@ -60,7 +61,14 @@ const t = useTranslations(lang);
         <div class="swiper-wrapper">
           <div class="swiper-slide flex justify-center">
             <Image
-              src={grottesImage}
+              src={grottes1Image}
+              alt="Ecole des Grottes"
+              class="rounded-lg"
+            />
+          </div>
+          <div class="swiper-slide flex justify-center">
+            <Image
+              src={grottes2Image}
               alt="Ecole des Grottes"
               class="rounded-lg"
             />
