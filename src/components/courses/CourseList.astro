@@ -1,8 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import { format } from "date-fns";
+import { useTranslations } from "../../i18n/utils";
 
 const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+
 const allCourses = await getCollection(
   "courses",
   ({ id, data: { published } }) => {
@@ -39,17 +42,25 @@ allCourses.sort((a, b) => {
         >
           <img
             src={course.data.bannerSrc}
-            alt="Bannière du cours actuel"
+            alt={lang === "en" ? "Course banner" : "Bannière du cours"}
             class="w-full object-cover"
           />
-          <div class="flex flex-col text-white">
-            <span class="flex-1 text-xl p-2 font-bold">
-              {course.data.title}
-            </span>
-            <span class="flex-1 p-2 pt-0">
-              Du {format(new Date(course.data.fromDate), "dd.MM.yyyy")} au{" "}
-              {format(new Date(course.data.toDate), "dd.MM.yyyy")}
-            </span>
+          <div class="flex flex-col md:flex-row flex-wrap text-white">
+            <div class="flex flex-col flex-1">
+              <span class="text-xl p-2 font-bold">{course.data.title}</span>
+              <span class="p-2 pt-0">
+                Du {format(new Date(course.data.fromDate), "dd.MM.yyyy")} au{" "}
+                {format(new Date(course.data.toDate), "dd.MM.yyyy")}
+              </span>
+            </div>
+            <div class="flex items-center justify-end p-2 w-auto">
+              {new Date(course.data.fromDate) > new Date() &&
+                !course.data.registrationUrl && (
+                  <span class="font-semibold bg-lime-500 rounded-lg p-2">
+                    {t("action.save-the-date")}
+                  </span>
+                )}
+            </div>
           </div>
         </a>
       ))

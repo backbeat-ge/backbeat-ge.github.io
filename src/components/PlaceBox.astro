@@ -6,9 +6,12 @@ interface Props {
     name: string;
     address: string;
     mapLink?: string;
-    comments?: string;
+    commentsFr?: string;
+    commentsEn?: string;
   };
 }
+
+const lang = Astro.currentLocale as "fr" | "en";
 
 const { place } = Astro.props;
 ---
@@ -32,8 +35,13 @@ const { place } = Astro.props;
     </div>
     <div>
       {
-        place.comments && (
-          <p class="text-gray-500 text-sm italic">{place.comments}</p>
+        lang === "fr" && place.commentsFr && (
+          <p class="text-gray-500 text-sm italic">{place.commentsFr}</p>
+        )
+      }
+      {
+        lang === "en" && place.commentsEn && (
+          <p class="text-gray-500 text-sm italic">{place.commentsEn}</p>
         )
       }
     </div>

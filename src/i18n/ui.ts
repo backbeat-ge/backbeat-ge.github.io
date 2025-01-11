@@ -25,6 +25,8 @@ export const ui = {
     "workshops.title": "Ateliers",
     "practice.title": "Pratique",
     "events.title": "Événements",
+    "action.register": "Je m'inscris!",
+    "action.save-the-date": "Réserve la date !",
   },
   en: {
     "alt.logo": "Our association's logo",
@@ -45,5 +47,7 @@ export const ui = {
     "workshops.title": "Workshops",
     "practice.title": "Practice",
     "events.title": "Events",
+    "action.register": "Register now!",
+    "action.save-the-date": "Save the date!",
   },
 } as const;

@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Cours hebdomadaires - Février à juin 2025
 fromDate: 2025-02-28T00:00:00.000Z
 toDate: 2025-06-16T00:00:00.000Z

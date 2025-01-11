@@ -4,10 +4,19 @@ import tinycolor from "tinycolor2";
 import CourseDecoBottom from "../../components/courses/CourseDecoBottom.astro";
 import CourseDecoTop from "../../components/courses/CourseDecoTop.astro";
 import PlaceBox from "../../components/PlaceBox.astro";
+import { useTranslations } from "../../i18n/utils";
 import Layout from "../Layout.astro";
 
 const {
-  frontmatter: { title, frontColor, bannerSrc, registrationUrl, placeList },
+  frontmatter: {
+    title,
+    fromDate,
+    toDate,
+    frontColor,
+    bannerSrc,
+    registrationUrl,
+    placeList,
+  },
 } = Astro.props;
 
 const resolvedPlaceList = placeList
@@ -24,17 +33,21 @@ const resolvedPlaceList = placeList
     )
   : null;
 
-const pageColor = tinycolor(frontColor).lighten(55).toString();
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+
+const borderColor = tinycolor(frontColor).darken(5).toString();
+const pageColor = tinycolor(frontColor).lighten(30).toString();
 ---
 
 <Layout title={`${title} | Backbeat`} class="bg-indigo-400">
   <CourseDecoTop />
 
   <div
-    class="flex flex-col max-w-screen-lg mx-auto m-12 border-8 border-indigo-600"
-    style={`background-color: ${pageColor};`}
+    class="flex flex-col max-w-screen-lg mx-auto m-12 border-8"
+    style={`background-color: ${pageColor}; border-color: ${borderColor};`}
   >
-    <div style={`background-color: ${frontColor}`}>
+    <div style={`background-color: ${borderColor}`}>
       <h1 class="text-4xl p-4 text-center text-white oswald">
         {title}
       </h1>
@@ -66,7 +79,9 @@ const pageColor = tinycolor(frontColor).lighten(55).toString();
               {resolvedPlaceList.length > 1 ? "Lieux" : "Lieu"}
             </h2>
           </div>
-          <div class="max-w-prose mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class={`max-w-prose mx-auto grid grid-cols-1 ${resolvedPlaceList.length > 1 ? "md:grid-cols-2" : ""} gap-6`}
+          >
             {resolvedPlaceList.map(({ place }) => (
               <PlaceBox place={place} />
             ))}
@@ -74,15 +89,37 @@ const pageColor = tinycolor(frontColor).lighten(55).toString();
         </div>
       )
     }
-    <div class="p-12 w-full flex">
-      <div class="flex flex-grow justify-center items-center">
-        <a
-          style={`background-color: ${frontColor};`}
-          class="p-8 text-xl text-white rounded-lg"
-          href={registrationUrl}>Je m'inscris!</a
-        >
-      </div>
-    </div>
+    {
+      registrationUrl &&
+        new Date(toDate).getTime() - new Date().getTime() >
+          30 * 24 * 60 * 60 * 1000 && (
+          <div class="p-12 w-full flex">
+            <div class="flex flex-grow justify-center items-center">
+              <a
+                style={`background-color: ${frontColor};`}
+                class="p-8 text-xl text-white rounded-lg"
+                href={registrationUrl}
+              >
+                {t("action.register")}
+              </a>
+            </div>
+          </div>
+        )
+    }
+    {
+      new Date(fromDate) > new Date() && !registrationUrl && (
+        <div class="p-12 w-full flex">
+          <div class="flex flex-grow justify-center items-center">
+            <span
+              class="p-8 text-xl text-white rounded-lg"
+              style={`background-color: ${frontColor};`}
+            >
+              {t("action.save-the-date")}
+            </span>
+          </div>
+        </div>
+      )
+    }
   </div>
   <CourseDecoBottom />
 </Layout>

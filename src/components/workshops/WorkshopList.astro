@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { format } from "date-fns";
+import tinycolor from "tinycolor2";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const allWorkshops = await getCollection(
@@ -31,28 +32,33 @@ allWorkshops.sort((a, b) => {
         )}
       </p>
     ) : (
-      allWorkshops.map((workshop) => (
-        <a
-          href={`${workshop.slug.split("/").slice(1).join("/")}`}
-          class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8 border-pink-600"
-          style={`background-color: ${workshop.data.frontColor}`}
-        >
-          <img
-            src={workshop.data.imageSrc}
-            alt="Bannière du cours actuel"
-            class="w-full object-cover"
-          />
-          <div class="flex flex-col text-white">
-            <span class="flex-1 text-xl p-2 font-bold">
-              {workshop.data.title}
-            </span>
-            <span class="flex-1 p-2 pt-0">
-              Du {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} au{" "}
-              {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
-            </span>
-          </div>
-        </a>
-      ))
+      allWorkshops.map((workshop) => {
+        const borderColor = tinycolor(workshop.data.frontColor)
+          .darken(5)
+          .toString();
+        return (
+          <a
+            href={`${workshop.slug.split("/").slice(1).join("/")}`}
+            class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8"
+            style={`background-color: ${borderColor}; border-color: ${borderColor}`}
+          >
+            <img
+              src={workshop.data.imageSrc}
+              alt="Bannière du cours actuel"
+              class="w-full object-cover"
+            />
+            <div class="flex flex-col text-white">
+              <span class="flex-1 text-xl p-2 font-bold">
+                {workshop.data.title}
+              </span>
+              <span class="flex-1 p-2 pt-0">
+                Du {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} au{" "}
+                {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
+              </span>
+            </div>
+          </a>
+        );
+      })
     )
   }
 </div>

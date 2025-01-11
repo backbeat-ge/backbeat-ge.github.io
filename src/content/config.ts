@@ -33,7 +33,7 @@ const courseCollection = defineCollection({
         place: z.string()
       })
     ).optional(),
-    registrationUrl: z.string().url().optional(),
+    registrationUrl: z.string().url().optional().or(z.literal("")),
   }),
 });
 const workshopCollection = defineCollection({
@@ -50,7 +50,7 @@ const workshopCollection = defineCollection({
         place: z.string()
       })
     ).optional(),
-    registrationUrl: z.string().url().optional(),
+    registrationUrl: z.string().url().optional().or(z.literal("")),
   }), 
 });
 const placeCollection = defineCollection({
@@ -59,7 +59,8 @@ const placeCollection = defineCollection({
     name: z.string(),
     address: z.string(),
     mapLink: z.string().optional(),
-    comments: z.string().optional(),
+    commentsFr: z.string().optional(),
+    commentsEn: z.string().optional(),
   }),
 });
 // Export a single `collections` object to register your collection(s)

@@ -176,7 +176,7 @@ export default defineConfig({
             name: "registrationUrl",
             label: "Registration URL",
             required: false,
-          },
+          }          
         ],
       },
       {
@@ -287,8 +287,14 @@ export default defineConfig({
           },
           {
             type: "rich-text",
-            name: "comments",
-            label: "Comments",
+            name: "commentsFr",
+            label: "Comments (FR)",
+            required: false,
+          },
+          {
+            type: "rich-text",
+            name: "commentsEn",
+            label: "Comments (EN)",
             required: false,
           },
         ],
