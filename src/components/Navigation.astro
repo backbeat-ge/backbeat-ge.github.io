@@ -20,7 +20,9 @@ const charterUrl = getRelativeLocaleUrl(lang, "association/charter");
 const becomeMemberUrl = getRelativeLocaleUrl(lang, "association/become-member");
 const conditionsUrl = getRelativeLocaleUrl(
   lang,
-  "association/registration-conditions",
+  "fr" === lang
+    ? "association/conditions-inscription"
+    : "association/registration-conditions",
 );
 
 const coursesUrl = getRelativeLocaleUrl(
