@@ -36,9 +36,14 @@ allWorkshops.sort((a, b) => {
         const borderColor = tinycolor(workshop.data.frontColor)
           .darken(5)
           .toString();
+        const workshopUrl =
+          "fr" === lang
+            ? `/fr/ateliers/${workshop.slug.split("/").slice(1).join("/")}`
+            : `/en/workshops/${workshop.slug.split("/").slice(1).join("/")}`;
+
         return (
           <a
-            href={`${workshop.slug.split("/").slice(1).join("/")}`}
+            href={workshopUrl}
             class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8"
             style={`background-color: ${borderColor}; border-color: ${borderColor}`}
           >
@@ -52,8 +57,18 @@ allWorkshops.sort((a, b) => {
                 {workshop.data.title}
               </span>
               <span class="flex-1 p-2 pt-0">
-                Du {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} au{" "}
-                {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
+                {"fr" === lang ? (
+                  <>
+                    Du {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")}{" "}
+                    au {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
+                  </>
+                ) : (
+                  <>
+                    From{" "}
+                    {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} to{" "}
+                    {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
+                  </>
+                )}
               </span>
             </div>
           </a>

@@ -7,7 +7,6 @@ import {
   MenuItems,
 } from "astro-navbar";
 import { Image } from "astro:assets";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 import { useTranslations } from "../i18n/utils";
 import logoImage from "../images/logo.png";
@@ -15,32 +14,22 @@ import logoImage from "../images/logo.png";
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 
-const homeUrl = getRelativeLocaleUrl(lang, "");
-const charterUrl = getRelativeLocaleUrl(lang, "association/charter");
-const becomeMemberUrl = getRelativeLocaleUrl(lang, "association/become-member");
-const conditionsUrl = getRelativeLocaleUrl(
-  lang,
+const homeUrl = "fr" === lang ? "/fr" : "/en";
+const charterUrl =
+  "fr" === lang ? "/fr/association/charte" : "/en/association/charter";
+const becomeMemberUrl =
   "fr" === lang
-    ? "association/conditions-inscription"
-    : "association/registration-conditions",
-);
+    ? "/fr/association/devenir-membre"
+    : "/en/association/become-member";
+const conditionsUrl =
+  "fr" === lang
+    ? "/fr/association/conditions-inscription"
+    : "/en/association/registration-conditions";
 
-const coursesUrl = getRelativeLocaleUrl(
-  lang,
-  "fr" === lang ? "cours" : "courses",
-);
-const workshopsUrl = getRelativeLocaleUrl(
-  lang,
-  "fr" === lang ? "ateliers" : "workshops",
-);
-const practiceUrl = getRelativeLocaleUrl(
-  lang,
-  "fr" === lang ? "pratique" : "practice",
-);
-const eventsUrl = getRelativeLocaleUrl(
-  lang,
-  "fr" === lang ? "événements" : "events",
-);
+const coursesUrl = "fr" === lang ? "/fr/cours" : "/en/courses";
+const workshopsUrl = "fr" === lang ? "/fr/ateliers" : "/en/workshops";
+const practiceUrl = "fr" === lang ? "/fr/pratique" : "/en/practice";
+const eventsUrl = "fr" === lang ? "/fr/événements" : "/en/events";
 ---
 
 <header class="lg:flex p-2 gap-5 bg-sky-100">

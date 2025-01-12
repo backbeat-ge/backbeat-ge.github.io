@@ -14,21 +14,21 @@ const resolvedPlace = place
   ? await getEntry("places", place.split("/").pop().replace(".json", ""))
   : null;
 
-const pageColor = frontColor
-  ? tinycolor(frontColor).lighten(55).toString()
-  : "#bae6fd";
 const baseColor = frontColor || "#0284c7";
+const pageColor = frontColor
+  ? tinycolor(frontColor).lighten(30).toString()
+  : "#bae6fd";
 ---
 
 <Layout title={`${title} | Backbeat`} class="bg-sky-400">
   <EventDecoTop />
 
   <div
-    class="flex flex-wrap max-w-screen-lg mx-auto m-12 border-8 border-sky-600"
+    class="flex flex-wrap max-w-screen-lg m-auto border-8 border-sky-600"
     style={`background-color: ${pageColor};`}
   >
     <div style={`background-color: ${baseColor}`} class="w-full">
-      <h1 class="text-4xl p-4 text-center text-white oswald">
+      <h1 class="text-2xl pb-2 text-center text-white oswald">
         {title}
       </h1>
     </div>

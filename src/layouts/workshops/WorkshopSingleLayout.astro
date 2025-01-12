@@ -43,20 +43,71 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
   <WorkshopDecoTop />
 
   <div
-    class="flex flex-wrap max-w-screen-lg mx-auto m-12 border-8"
+    class="flex flex-wrap max-w-screen-lg m-auto m-12 border-8"
     style={`background-color: ${pageColor}; border-color: ${borderColor};`}
   >
     <div style={`background-color: ${borderColor}`} class="w-full">
-      <h1 class="text-4xl p-4 text-center text-white oswald">
+      <h1 class="text-2xl pb-2 text-center text-white oswald">
         {title}
       </h1>
     </div>
     <div class="flex items-start overflow-hidden w-full md:w-1/2">
-      <img
-        src={imageSrc}
-        alt="Bannière du cours actuel"
-        class="w-full object-cover"
-      />
+      <div class="flex flex-col">
+        <img
+          src={imageSrc}
+          alt="Bannière du cours actuel"
+          class="w-full object-cover"
+        />
+        {
+          resolvedPlaceList && (
+            <div class="p-8 w-full md:w-1/2">
+              <div class="p-12">
+                <div class="max-w-prose mx-auto">
+                  <h2 class="text-2xl font-bold mb-6">
+                    {resolvedPlaceList.length > 1 ? "Lieux" : "Lieu"}
+                  </h2>
+                </div>
+                <div
+                  class={`max-w-prose mx-auto grid grid-cols-1 ${resolvedPlaceList.length > 1 ? "md:grid-cols-2" : ""} gap-6`}
+                >
+                  {resolvedPlaceList.map(({ place }) => (
+                    <PlaceBox place={place} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )
+        }
+        {
+          registrationUrl && (
+            <div class="p-12 w-full flex">
+              <div class="flex flex-grow justify-center items-center">
+                <a
+                  style={`background-color: ${frontColor};`}
+                  class="p-8 text-xl text-white rounded-lg"
+                  href={registrationUrl}
+                >
+                  {t("action.register")}
+                </a>
+              </div>
+            </div>
+          )
+        }
+        {
+          new Date(fromDate) > new Date() && !registrationUrl && (
+            <div class="p-12 w-full flex">
+              <div class="flex flex-grow justify-center items-center">
+                <span
+                  class="p-8 text-xl text-white rounded-lg"
+                  style={`background-color: ${frontColor};`}
+                >
+                  {t("action.save-the-date")}
+                </span>
+              </div>
+            </div>
+          )
+        }
+      </div>
     </div>
     <div class="p-8 w-full md:w-1/2">
       <div
@@ -70,55 +121,6 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
         <slot />
       </div>
     </div>
-    {
-      resolvedPlaceList && (
-        <div class="p-8 w-full md:w-1/2">
-          <div class="p-12">
-            <div class="max-w-prose mx-auto">
-              <h2 class="text-2xl font-bold mb-6">
-                {resolvedPlaceList.length > 1 ? "Lieux" : "Lieu"}
-              </h2>
-            </div>
-            <div
-              class={`max-w-prose mx-auto grid grid-cols-1 ${resolvedPlaceList.length > 1 ? "md:grid-cols-2" : ""} gap-6`}
-            >
-              {resolvedPlaceList.map(({ place }) => (
-                <PlaceBox place={place} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )
-    }
-    {
-      registrationUrl && (
-        <div class="p-12 w-full flex">
-          <div class="flex flex-grow justify-center items-center">
-            <a
-              style={`background-color: ${frontColor};`}
-              class="p-8 text-xl text-white rounded-lg"
-              href={registrationUrl}
-            >
-              {t("action.register")}
-            </a>
-          </div>
-        </div>
-      )
-    }
-    {
-      new Date(fromDate) > new Date() && !registrationUrl && (
-        <div class="p-12 w-full flex">
-          <div class="flex flex-grow justify-center items-center">
-            <span
-              class="p-8 text-xl text-white rounded-lg"
-              style={`background-color: ${frontColor};`}
-            >
-              {t("action.save-the-date")}
-            </span>
-          </div>
-        </div>
-      )
-    }
   </div>
   <WorkshopDecoBottom />
 </Layout>

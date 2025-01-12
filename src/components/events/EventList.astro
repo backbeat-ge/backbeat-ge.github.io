@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { format } from "date-fns";
 
 const lang = Astro.currentLocale as "fr" | "en";
+
 const allEvents = await getCollection(
   "events",
   ({ id, data: { published } }) => {
@@ -31,24 +32,33 @@ allEvents.sort((a, b) => {
         )}
       </p>
     ) : (
-      allEvents.map((event) => (
-        <a
-          href={`${event.slug.split("/").slice(1).join("/")}`}
-          class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8 border-sky-600 bg-sky-600"
-        >
-          <img
-            src={event.data.imageSrc}
-            alt={lang === "fr" ? "Bannière de l'événement" : "Event banner"}
-            class="w-full object-cover"
-          />
-          <div class="flex flex-col text-white">
-            <span class="flex-1 text-xl p-2 font-bold">{event.data.title}</span>
-            <span class="flex-1 p-2 pt-0">
-              {format(new Date(event.data.date), "dd.MM.yyyy")}
-            </span>
-          </div>
-        </a>
-      ))
+      allEvents.map((event) => {
+        const eventUrl =
+          "fr" === lang
+            ? `/fr/événements/${event.slug.split("/").slice(1).join("/")}`
+            : `/en/events/${event.slug.split("/").slice(1).join("/")}`;
+
+        return (
+          <a
+            href={eventUrl}
+            class="flex flex-col w-full md:w-[calc(50%-1rem)] pb-0 my-6 border-8 border-sky-600 bg-sky-600"
+          >
+            <img
+              src={event.data.imageSrc}
+              alt={"fr" === lang ? "Bannière de l'événement" : "Event banner"}
+              class="w-full object-cover"
+            />
+            <div class="flex flex-col text-white">
+              <span class="flex-1 text-xl p-2 font-bold">
+                {event.data.title}
+              </span>
+              <span class="flex-1 p-2 pt-0">
+                {format(new Date(event.data.date), "dd.MM.yyyy")}
+              </span>
+            </div>
+          </a>
+        );
+      })
     )
   }
 </div>

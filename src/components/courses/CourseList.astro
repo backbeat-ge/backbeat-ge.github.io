@@ -40,9 +40,14 @@ allCourses.sort((a, b) => {
           .darken(5)
           .toString();
 
+        const courseUrl =
+          "fr" === lang
+            ? `/fr/cours/${course.slug.split("/").slice(1).join("/")}`
+            : `/en/courses/${course.slug.split("/").slice(1).join("/")}`;
+
         return (
           <a
-            href={`${course.slug.split("/").slice(1).join("/")}`}
+            href={courseUrl}
             class="flex flex-col w-full pb-0 border-8"
             style={`background-color: ${borderColor}; border-color: ${borderColor}`}
           >

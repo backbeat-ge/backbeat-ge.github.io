@@ -1,19 +1,19 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations } from "../i18n/utils";
 import FontAwesomeIcon from "./icons/FontAwesomeIcon.astro";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 
-const charterUrl = getRelativeLocaleUrl(lang, "association/charter");
-const registrationConditionsUrl = getRelativeLocaleUrl(
-  lang,
-  "association/registration-conditions",
-);
+const charterUrl =
+  "fr" === lang ? "/fr/association/charte" : "/en/association/charter";
+const registrationConditionsUrl =
+  "fr" === lang
+    ? "/fr/association/conditions-inscription"
+    : "/en/association/registration-conditions";
 
-const homeFrUrl = getRelativeLocaleUrl("fr", "");
-const homeEnUrl = getRelativeLocaleUrl("en", "");
+const homeFrUrl = "/fr";
+const homeEnUrl = "/en";
 ---
 
 <footer class="p-12 pt-20 bg-amber-50 my-auto mb-0 text-stone-600">
