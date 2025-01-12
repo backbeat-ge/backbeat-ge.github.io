@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Automne 2024
 fromDate: 2024-10-02T00:00:00.000Z
 toDate: 2025-01-29T00:00:00.000Z

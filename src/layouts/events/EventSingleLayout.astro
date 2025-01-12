@@ -7,17 +7,15 @@ import PlaceBox from "../../components/PlaceBox.astro";
 import Layout from "../Layout.astro";
 
 const {
-  frontmatter: { title, frontColor, imageSrc, place },
+  frontmatter: { title, imageSrc, place },
 } = Astro.props;
 
 const resolvedPlace = place
   ? await getEntry("places", place.split("/").pop().replace(".json", ""))
   : null;
 
-const baseColor = frontColor || "#0284c7";
-const pageColor = frontColor
-  ? tinycolor(frontColor).lighten(30).toString()
-  : "#bae6fd";
+const frontColor = "#0284c7";
+const pageColor = tinycolor(frontColor).lighten(50).toString(); // "#bae6fd"
 ---
 
 <Layout title={`${title} | Backbeat`} class="bg-sky-400">
@@ -27,7 +25,7 @@ const pageColor = frontColor
     class="flex flex-wrap max-w-screen-lg m-auto border-8 border-sky-600"
     style={`background-color: ${pageColor};`}
   >
-    <div style={`background-color: ${baseColor}`} class="w-full">
+    <div style={`background-color: ${frontColor}`} class="w-full">
       <h1 class="text-2xl pb-2 text-center text-white oswald">
         {title}
       </h1>
@@ -50,7 +48,7 @@ const pageColor = frontColor
         resolvedPlace && (
           <div class="max-w-prose mx-auto">
             <h2 class="text-2xl font-bold my-6">Lieu</h2>
-            <PlaceBox place={resolvedPlace.data} />
+            <PlaceBox place={resolvedPlace.data} color={frontColor} />
           </div>
         )
       }

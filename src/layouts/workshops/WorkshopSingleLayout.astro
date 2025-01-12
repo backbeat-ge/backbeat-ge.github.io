@@ -71,7 +71,7 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
                   class={`max-w-prose mx-auto grid grid-cols-1 ${resolvedPlaceList.length > 1 ? "md:grid-cols-2" : ""} gap-6`}
                 >
                   {resolvedPlaceList.map(({ place }) => (
-                    <PlaceBox place={place} />
+                    <PlaceBox place={place} color={frontColor} />
                   ))}
                 </div>
               </div>

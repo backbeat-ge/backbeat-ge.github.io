@@ -9,11 +9,12 @@ interface Props {
     commentsFr?: string;
     commentsEn?: string;
   };
+  color?: string;
 }
 
 const lang = Astro.currentLocale as "fr" | "en";
 
-const { place } = Astro.props;
+const { place, color } = Astro.props;
 ---
 
 <div class="bg-white p-4 rounded-lg shadow">
@@ -26,8 +27,8 @@ const { place } = Astro.props;
       {
         place.mapLink && (
           <div class="w-fit">
-            <a href={place.mapLink} class="text-blue-500">
-              <FontAwesomeIcon icon="location-dot" class="h-6 fill-stone-600" />
+            <a href={place.mapLink}>
+              <FontAwesomeIcon icon="location-dot" class="h-6" color={color} />
             </a>
           </div>
         )
