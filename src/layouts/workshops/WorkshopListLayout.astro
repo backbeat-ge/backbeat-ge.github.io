@@ -8,9 +8,24 @@ import WorkshopListHeader from "../../components/workshops/WorkshopListHeader.as
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
+
+const description =
+  "fr" === lang
+    ? "Des weekends intenses de lindy hop et solo jazz, avec des profs invité·e·s de ouf!"
+    : "Intense weekends of lindy hop and solo jazz, with guest teachers of ouf!";
+
+const keywords =
+  "fr" === lang
+    ? ["weekend", "profs invité·e·s"]
+    : ["weekend", "guest teachers"];
 ---
 
-<Layout title={t("workshops.title") + " | Backbeat"} class="bg-pink-400">
+<Layout
+  title={t("page.workshops.title")}
+  description={description}
+  keywords={keywords}
+  class="bg-pink-400"
+>
   <WorkshopListHeader />
   <div class="flex flex-grow">
     <WorkshopList />

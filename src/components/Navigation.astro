@@ -37,7 +37,7 @@ const eventsUrl = "fr" === lang ? "/fr/événements" : "/en/events";
     <div class="flex w-full justify-between">
       <div class="block flex items-center">
         <a href={homeUrl}>
-          <Image src={logoImage} alt="Our logo" class="h-16 w-auto" />
+          <Image src={logoImage} alt={t("alt.logo")} class="h-16 w-auto" />
         </a>
         <div class="text-xs text-stone-500 ml-4">
           {
@@ -75,22 +75,22 @@ const eventsUrl = "fr" === lang ? "/fr/événements" : "/en/events";
       >
         <li>
           <a class="text-stone-800 hover:text-sky-800" href={coursesUrl}
-            >{t("courses.title")}</a
+            >{t("page.courses.title")}</a
           >
         </li>
         <li>
           <a class="text-stone-800 hover:text-sky-800" href={workshopsUrl}
-            >{t("workshops.title")}</a
+            >{t("page.workshops.title")}</a
           >
         </li>
         <li>
           <a class="text-stone-800 hover:text-sky-800" href={practiceUrl}
-            >{t("practice.title")}</a
+            >{t("page.practice.title")}</a
           >
         </li>
         <li>
           <a class="text-stone-800 hover:text-sky-800" href={eventsUrl}
-            >{t("events.title")}</a
+            >{t("page.events.title")}</a
           >
         </li>
         <li>

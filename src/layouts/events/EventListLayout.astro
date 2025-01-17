@@ -10,7 +10,7 @@ const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
 ---
 
-<Layout title={t("events.title") + " | Backbeat"} class="bg-sky-400">
+<Layout title={t("page.events.title")} class="bg-sky-400">
   <EventListHeader />
   <div class="flex flex-grow">
     <EventList />

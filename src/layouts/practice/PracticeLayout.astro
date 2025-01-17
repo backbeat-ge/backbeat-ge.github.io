@@ -7,9 +7,22 @@ import Layout from "../Layout.astro";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
+
+const description =
+  "fr" === lang
+    ? "Pratique hebdomadaire de solo jazz."
+    : "Weekly solo jazz practice.";
+
+const keywords =
+  "fr" === lang ? ["pratique", "solo jazz"] : ["practice", "solo jazz"];
 ---
 
-<Layout title={t("practice.title") + " | Backbeat"} class="bg-amber-400">
+<Layout
+  title={t("page.practice.title")}
+  description={description}
+  keywords={keywords}
+  class="bg-amber-400"
+>
   <PracticeHeader />
   <div class="flex flex-grow">
     <PracticeContent />

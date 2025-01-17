@@ -1,6 +1,8 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
+  description?: string;
+  keywords?: string[];
   class?: string;
   style?: string;
 }
@@ -11,17 +13,43 @@ import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import { generateRelativeUrl } from "../utils";
 
-const currentLanguage = Astro.currentLocale;
+const {
+  title,
+  description,
+  keywords,
+  class: classes,
+  style: customStyle,
+} = Astro.props;
 
-const { title, class: classes, style: customStyle } = Astro.props;
+const lang = Astro.currentLocale as "fr" | "en";
+
+const descriptionFinal = description
+  ? description
+  : "fr" === lang
+    ? "Backbeat, danses swing à Genève. L'association Backbeat, c'est des gens qui aiment et partagent le swing, son histoire, sa musique et ses danses."
+    : "Backbeat, swing dance in Geneva. The Backbeat association is a group of people who love and share swing, its history, its music and its dances.";
+
+const keywordsArray = keywords ? keywords : [];
+keywordsArray.push(
+  "Backbeat",
+  "swing",
+  "lindy hop",
+  lang === "fr" ? "Genève" : "Geneva",
+  "association",
+);
 ---
 
 <!doctype html>
-<html lang={currentLanguage}>
+<html lang={lang}>
   <head>
+    <title>{title ? title + " | Backbeat" : "Backbeat"}</title>
     <meta charset="utf-8" />
-    <meta name="description" content="Association Backbeat" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={descriptionFinal} />
+    <meta name="keywords" content={keywordsArray.join(", ")} />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -32,7 +60,6 @@ const { title, class: classes, style: customStyle } = Astro.props;
         font-family: "Oswald Variable", sans-serif;
       }
     </style>
-    <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col bg-sky-50">
     <Navigation />

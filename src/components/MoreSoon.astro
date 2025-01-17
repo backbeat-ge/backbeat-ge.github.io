@@ -3,9 +3,15 @@ import { useTranslations } from "../i18n/utils";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
+
+const title = "fr" === lang ? "À suivre…" : "More soon…";
+const subtitle =
+  "fr" === lang
+    ? "Nous migrons notre site, merci de ta patience."
+    : "We are migrating our website, thanks for your patience.";
 ---
 
 <div class="p-8 text-center bg-sky-100">
-  <h1 class="text-4xl pb-2 text-amber-700">{t("more-soon")}</h1>
-  <h2 class="text-xl text-stone-600">🚧 {t("more-soon.help")}</h2>
+  <h1 class="text-4xl pb-2 text-amber-700">{title}</h1>
+  <h2 class="text-xl text-stone-600">🚧 {subtitle}</h2>
 </div>

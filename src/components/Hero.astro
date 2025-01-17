@@ -42,7 +42,7 @@ const eventsUrl = getRelativeLocaleUrl(
     class="w-full absolute top-0 left-0 h-full p-6 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start"
   >
     <div class="bg-black/40 md:bg-transparent p-3 mb-4 md:p-0 md:mb-0">
-      <Image src={whiteLogoImage} alt="Our logo" class="h-32 w-auto" />
+      <Image src={whiteLogoImage} alt={t("alt.logo")} class="h-32 w-auto" />
     </div>
 
     <div class="w-auto">
@@ -58,30 +58,27 @@ const eventsUrl = getRelativeLocaleUrl(
           class="bg-indigo-800 hover:bg-indigo-600 text-indigo-200 text-lg py-2 px-4"
           href={classesUrl}
         >
-          {t("courses.title")}
+          {t("page.courses.title")}
         </a>
         <a
           class="bg-rose-800 hover:bg-rose-600 text-rose-200 text-lg py-2 px-4"
           href={workshopsUrl}
         >
-          {t("workshops.title")}
+          {t("page.workshops.title")}
         </a>
         <a
           class="bg-amber-800 hover:bg-amber-600 text-amber-200 text-lg py-2 px-4"
           href={practiceUrl}
         >
-          {t("practice.title")}
+          {t("page.practice.title")}
         </a>
         <a
           class="bg-sky-800 hover:bg-sky-600 text-sky-200 text-lg py-2 px-4"
           href={eventsUrl}
         >
-          {t("events.title")}
+          {t("page.events.title")}
         </a>
       </div>
     </div>
   </div>
-
-  <!-- <div class="absolute top-0 left-0 p-12">
-  </div> -->
 </section>

@@ -7,9 +7,21 @@ import Layout from "../Layout.astro";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
+
+const description =
+  "fr" === lang
+    ? "Des cours hebdomadaires de lindy hop et solo jazz, avec des professeurs passionné·e·s qui partagent nos valeurs de chaleur humaine, intérêt pour la culture jazz et engagement pour que tout le monde se sente bienvenu·e·x."
+    : "Weekly Lindy Hop and solo jazz classes for 6 years, with passionate teachers who share our values of human warmth, interest in jazz culture and commitment to making everyone feel welcome.";
+
+const keywords = "fr" === lang ? ["cours hebdomadaires"] : ["weekly classes"];
 ---
 
-<Layout title={t("courses.title") + " | Backbeat"} class="bg-indigo-400">
+<Layout
+  title={t("page.courses.title")}
+  description={description}
+  keywords={keywords}
+  class="bg-indigo-400"
+>
   <CourseListHeader />
   <div class="flex flex-grow">
     <CourseList />
