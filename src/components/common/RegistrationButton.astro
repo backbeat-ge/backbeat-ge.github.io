@@ -1,0 +1,21 @@
+---
+import { useTranslations } from "../../i18n/utils";
+
+interface Props {
+  frontColor: string;
+  registrationUrl: string;
+}
+
+const lang = Astro.currentLocale as "fr" | "en";
+const t = useTranslations(lang);
+
+const { registrationUrl, frontColor } = Astro.props;
+---
+
+<a
+  style={`background-color: ${frontColor};`}
+  class="p-8 text-xl text-white rounded-lg"
+  href={registrationUrl}
+>
+  {t("action.register")}
+</a>

@@ -1,7 +1,9 @@
 ---
 import { getEntry } from "astro:content";
 import tinycolor from "tinycolor2";
-import PlaceBox from "../../components/PlaceBox.astro";
+import PlaceBox from "../../components/common/PlaceBox.astro";
+import RegistrationButton from "../../components/common/RegistrationButton.astro";
+import SaveTheDateBox from "../../components/common/SaveTheDateBox.astro";
 import WorkshopDecoBottom from "../../components/workshops/WorkshopDecoBottom.astro";
 import WorkshopDecoTop from "../../components/workshops/WorkshopDecoTop.astro";
 import { useTranslations } from "../../i18n/utils";
@@ -55,7 +57,7 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
       <div class="flex flex-col">
         <img
           src={imageSrc}
-          alt="Bannière du cours actuel"
+          alt={"fr" === lang ? "Bannière de l'atelier" : "Workshop banner"}
           class="w-full object-cover"
         />
         {
@@ -82,13 +84,10 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
           registrationUrl && (
             <div class="p-12 w-full flex">
               <div class="flex flex-grow justify-center items-center">
-                <a
-                  style={`background-color: ${frontColor};`}
-                  class="p-8 text-xl text-white rounded-lg"
-                  href={registrationUrl}
-                >
-                  {t("action.register")}
-                </a>
+                <RegistrationButton
+                  registrationUrl={registrationUrl}
+                  frontColor={frontColor}
+                />
               </div>
             </div>
           )
@@ -97,12 +96,7 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
           new Date(fromDate) > new Date() && !registrationUrl && (
             <div class="p-12 w-full flex">
               <div class="flex flex-grow justify-center items-center">
-                <span
-                  class="p-8 text-xl text-white rounded-lg"
-                  style={`background-color: ${frontColor};`}
-                >
-                  {t("action.save-the-date")}
-                </span>
+                <SaveTheDateBox frontColor={frontColor} />
               </div>
             </div>
           )

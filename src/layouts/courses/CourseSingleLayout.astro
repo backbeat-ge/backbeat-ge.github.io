@@ -1,9 +1,11 @@
 ---
 import { getEntry } from "astro:content";
 import tinycolor from "tinycolor2";
+import PlaceBox from "../../components/common/PlaceBox.astro";
+import RegistrationButton from "../../components/common/RegistrationButton.astro";
+import SaveTheDateBox from "../../components/common/SaveTheDateBox.astro";
 import CourseDecoBottom from "../../components/courses/CourseDecoBottom.astro";
 import CourseDecoTop from "../../components/courses/CourseDecoTop.astro";
-import PlaceBox from "../../components/PlaceBox.astro";
 import { useTranslations } from "../../i18n/utils";
 import Layout from "../Layout.astro";
 
@@ -95,13 +97,10 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
           30 * 24 * 60 * 60 * 1000 && (
           <div class="p-12 w-full flex">
             <div class="flex flex-grow justify-center items-center">
-              <a
-                style={`background-color: ${frontColor};`}
-                class="p-8 text-xl text-white rounded-lg"
-                href={registrationUrl}
-              >
-                {t("action.register")}
-              </a>
+              <RegistrationButton
+                registrationUrl={registrationUrl}
+                frontColor={frontColor}
+              />
             </div>
           </div>
         )
@@ -110,12 +109,7 @@ const pageColor = tinycolor(frontColor).lighten(30).toString();
       new Date(fromDate) > new Date() && !registrationUrl && (
         <div class="p-12 w-full flex">
           <div class="flex flex-grow justify-center items-center">
-            <span
-              class="p-8 text-xl text-white rounded-lg"
-              style={`background-color: ${frontColor};`}
-            >
-              {t("action.save-the-date")}
-            </span>
+            <SaveTheDateBox frontColor={frontColor} />
           </div>
         </div>
       )

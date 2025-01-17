@@ -4,10 +4,14 @@ import { format } from "date-fns";
 
 const lang = Astro.currentLocale as "fr" | "en";
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 const allEvents = await getCollection(
   "events",
-  ({ id, data: { published } }) => {
-    return id.startsWith(lang) && published;
+  ({ id, data: { published, date } }) => {
+    const eventDate = new Date(date);
+    return id.startsWith(lang) && published && eventDate >= today;
   },
 );
 

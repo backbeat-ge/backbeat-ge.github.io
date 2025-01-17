@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "../i18n/utils";
+import { useTranslations } from "../../i18n/utils";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
@@ -11,7 +11,7 @@ const subtitle =
     : "We are migrating our website, thanks for your patience.";
 ---
 
-<div class="p-8 text-center bg-sky-100">
-  <h1 class="text-4xl pb-2 text-amber-700">{title}</h1>
-  <h2 class="text-xl text-stone-600">🚧 {subtitle}</h2>
+<div class="p-8 text-center bg-zinc-500">
+  <h1 class="text-4xl pb-3 text-zinc-100">{title}</h1>
+  <h2 class="text-xl text-zinc-100">🚧 {subtitle} 🚧</h2>
 </div>

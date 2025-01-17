@@ -1,0 +1,174 @@
+---
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+
+const lang = Astro.currentLocale as "fr" | "en";
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const allEvents = await getCollection(
+  "events",
+  ({ id, data: { published, date } }) => {
+    const eventDate = new Date(date);
+    return id.startsWith(lang) && published && eventDate >= today;
+  },
+);
+
+allEvents.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+
+  return dateB.getTime() - dateA.getTime();
+});
+
+const allWorkshops = await getCollection(
+  "workshops",
+  ({ id, data: { published, toDate } }) => {
+    return id.startsWith(lang) && published && toDate >= today;
+  },
+);
+
+allWorkshops.sort((a, b) => {
+  const dateA = new Date(a.data.fromDate);
+  const dateB = new Date(b.data.fromDate);
+
+  return dateB.getTime() - dateA.getTime();
+});
+
+const oneMonthAgo = new Date();
+oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+oneMonthAgo.setHours(0, 0, 0, 0);
+
+const allCourses = await getCollection(
+  "courses",
+  ({ id, data: { published, fromDate } }) => {
+    return id.startsWith(lang) && published && fromDate >= oneMonthAgo;
+  },
+);
+
+allCourses.sort((a, b) => {
+  const dateA = new Date(a.data.fromDate);
+  const dateB = new Date(b.data.fromDate);
+
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+{
+  (allEvents.length > 0 ||
+    allWorkshops.length > 0 ||
+    allCourses.length > 0) && (
+    <div class="pt-8 pb-12 px-8 text-center bg-amber-100">
+      <h1 class="text-4xl pb-6 text-amber-700">
+        {"fr" === lang ? "Nos prochaines activités" : "Our next events"}
+      </h1>
+
+      <div class="flex flex-col md:flex-row gap-4 items-center md:items-start justify-center">
+        {allEvents.length > 0 && (
+          <div class="flex flex-col gap-4">
+            {allEvents.map((event) => {
+              const eventUrl =
+                "fr" === lang
+                  ? `/fr/événements/${event.slug.split("/").slice(1).join("/")}`
+                  : `/en/events/${event.slug.split("/").slice(1).join("/")}`;
+
+              return (
+                <a
+                  href={eventUrl}
+                  class="flex flex-col border-sky-600 bg-sky-600 border-4"
+                >
+                  <img
+                    src={event.data.imageSrc}
+                    alt={
+                      "fr" === lang ? "Bannière de l'événement" : "Event banner"
+                    }
+                    class="w-[200px] object-cover"
+                  />
+                  <div class="flex flex-col text-white justify-end">
+                    <span class="flex-1 text-xl font-bold">
+                      {event.data.title}
+                    </span>
+                    <span class="flex-1 pt-0">
+                      {format(new Date(event.data.date), "dd.MM.yyyy")}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        )}
+
+        {allWorkshops.length > 0 && (
+          <div class="flex flex-col gap-4">
+            {allWorkshops.map((workshop) => {
+              const workshopUrl =
+                "fr" === lang
+                  ? `/fr/ateliers/${workshop.slug.split("/").slice(1).join("/")}`
+                  : `/en/workshops/${workshop.slug.split("/").slice(1).join("/")}`;
+
+              return (
+                <a
+                  href={workshopUrl}
+                  class="flex flex-col border-pink-600 bg-pink-600 border-4"
+                >
+                  <img
+                    src={workshop.data.imageSrc}
+                    alt={
+                      "fr" === lang
+                        ? "Bannière de l'atelier"
+                        : "Workshop banner"
+                    }
+                    class="w-[200px] object-cover"
+                  />
+                  <div class="flex flex-col text-white justify-end">
+                    <span class="flex-1 text-xl font-bold">
+                      {workshop.data.title}
+                    </span>
+                    <span class="flex-1 pt-0">
+                      {format(new Date(workshop.data.fromDate), "dd.MM.yyyy")} -
+                      {format(new Date(workshop.data.toDate), "dd.MM.yyyy")}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        )}
+
+        {allCourses.length > 0 && (
+          <div class="flex flex-col gap-4">
+            {allCourses.map((course) => {
+              const courseUrl =
+                "fr" === lang
+                  ? `/fr/cours/${course.slug.split("/").slice(1).join("/")}`
+                  : `/en/courses/${course.slug.split("/").slice(1).join("/")}`;
+
+              return (
+                <a
+                  href={courseUrl}
+                  class="flex flex-col border-indigo-600 bg-indigo-600 border-4"
+                >
+                  <img
+                    src={course.data.bannerSrc}
+                    alt={"fr" === lang ? "Bannière du cours" : "Course banner"}
+                    class="w-[400px] object-cover"
+                  />
+                  <div class="flex flex-col text-white justify-end">
+                    <span class="flex-1 text-xl font-bold">
+                      {course.data.title}
+                    </span>
+                    <span class="flex-1 pt-0">
+                      {format(new Date(course.data.fromDate), "dd.MM.yyyy")} -
+                      {format(new Date(course.data.toDate), "dd.MM.yyyy")}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}

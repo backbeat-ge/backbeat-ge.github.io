@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { useTranslations } from "../i18n/utils";
-import heroPhoto from "../images/hero-photo-1.jpg";
-import whiteLogoImage from "../images/logo-white.png";
+import { useTranslations } from "../../i18n/utils";
+import heroPhoto from "../../images/hero-photo-1.jpg";
+import whiteLogoImage from "../../images/logo-white.png";
 
 const lang = Astro.currentLocale as "fr" | "en";
 const t = useTranslations(lang);
