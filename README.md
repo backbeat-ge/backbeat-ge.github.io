@@ -26,7 +26,7 @@ docker-compose exec astro bash
 
 ### Accessing
 
-When developing with Docker, the site will be available at `http://localhost:4321/fr/`, the admin interface at `http://localhost:4001/admin/`
+When developing with Docker, the site will be available at `http://localhost:4321/fr/`, the admin interface at `http://localhost:4001/admin/`.
 
 > ‼️ Because of our custom initial redirection, one needs to make sure to access the full path to one of the locales. Otherwise, `http://localhost:4321` for example, will currently redirect to our public site (`https://backbeat-ge.github.io`).
 
