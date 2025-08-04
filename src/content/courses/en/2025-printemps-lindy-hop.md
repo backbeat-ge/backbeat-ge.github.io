@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Printemps 2025 - Lindy hop
 fromDate: 2025-03-05T00:00:00.000Z
 toDate: 2025-06-26T00:00:00.000Z

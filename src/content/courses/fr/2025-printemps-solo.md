@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Printemps 2025 - Solo jazz
 fromDate: 2025-03-04T00:00:00.000Z
 toDate: 2025-06-03T00:00:00.000Z
