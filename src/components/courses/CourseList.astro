@@ -18,7 +18,7 @@ allCourses.sort((a, b) => {
   const dateA = new Date(a.data.fromDate);
   const dateB = new Date(b.data.fromDate);
 
-  return dateB.getTime() - dateA.getTime();
+  return dateA.getTime() - dateB.getTime();
 });
 ---
 
