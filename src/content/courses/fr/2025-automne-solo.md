@@ -1,6 +1,6 @@
 ---
 published: true
-title: Automne 2025 - Solo jazz
+title: Automne 2025 - Solo jazz (débutant)
 fromDate: 2025-10-01T00:00:00.000Z
 toDate: 2025-12-17T00:00:00.000Z
 bannerSrc: /uploads/courses/2025-printemps-solo.png

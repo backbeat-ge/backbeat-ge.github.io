@@ -1,6 +1,6 @@
 ---
 published: true
-title: Fall 2025 - Solo jazz
+title: Fall 2025 - Solo jazz (beginner)
 fromDate: 2025-10-01T00:00:00.000Z
 toDate: 2025-12-17T00:00:00.000Z
 bannerSrc: /uploads/courses/2025-printemps-solo.png
