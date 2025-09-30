@@ -1,8 +1,8 @@
 ---
 published: true
 title: Automne 2025 - Lindy hop
-fromDate: 2025-09-30T00:00:00.000Z
-toDate: 2026-01-27T00:00:00.000Z
+fromDate: 2025-10-28T00:00:00.000Z
+toDate: 2026-02-17T00:00:00.000Z
 bannerSrc: /uploads/courses/2025-printemps-lindy-hop.png
 frontColor: '#8c52ff'
 placeList:
@@ -26,7 +26,7 @@ L'association Backbeat s'engage à créer dans ce cours une atmosphère inclusiv
 
 ### Dates et horaires
 
-Les cours de lindy hop ont lieu **du mardi 30 septembre 2025 au 27 janvier 2026** à l'´école **Hugo de Senger** à Plainpalais.
+Les cours de lindy hop ont lieu **du mardi 28 octobre 2025 au 17 février 2026** à l'´école **Hugo de Senger** à Plainpalais.
 
 * Horaires&nbsp;: 20h15-21h30
 

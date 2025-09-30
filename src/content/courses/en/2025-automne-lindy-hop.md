@@ -1,8 +1,8 @@
 ---
 published: true
 title: Fall 2025 - Lindy hop
-fromDate: 2025-09-30T00:00:00.000Z
-toDate: 2026-01-27T00:00:00.000Z
+fromDate: 2025-10-28T00:00:00.000Z
+toDate: 2026-02-17T00:00:00.000Z
 bannerSrc: /uploads/courses/2025-printemps-lindy-hop.png
 frontColor: '#8c52ff'
 placeList:
@@ -26,13 +26,12 @@ The Backbeat association is committed to creating an inclusive atmosphere in thi
 
 ### Dates & Times
 
-Lindy Hop classes take place from **Tuesday, September 30, 2025 to January 27, 2026** at **École Hugo de Senger** in Plainpalais.
+Lindy Hop classes take place from **Tuesday, October 28, 2025 to February 17, 2026** at **École Hugo de Senger** in Plainpalais.
 
 * Schedule: 8:15 PM – 9:30 PM
 
 Classes will be held weekly, except during school holidays:
 
-* Week of October 20–24
 * Weeks of December 22 to January 2.
 
 ### Price
