@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import dancers from "../../images/history/willa-mae-ricker-leon-james.jpeg";
+
+const lang = Astro.currentLocale as "fr" | "en";
+---
+
+<div class="bg-sky-900 text-sky-100">
+  <section class="mx-auto max-w-6xl w-full lg:px-0">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <!-- Image column - covers whole column -->
+      <div class="order-2 lg:order-1 h-full">
+        <Image
+          src={dancers}
+          alt={"fr" === lang
+            ? "Willa Mae Ricker et Leon James dançant"
+            : "Willa Mae Ricker and Leon James dancing"}
+          class="w-full h-full object-cover"
+          height={400}
+        />
+      </div>
+
+      <!-- Text column -->
+      <div class="order-1 lg:order-2 p-4 flex flex-col justify-center">
+        {
+          "fr" === lang ? (
+            <>
+              <h1 class="pb-3 text-2xl font-bold">Les danses jazz ??</h1>
+              <p class="pb-3">
+                Des danses nées dans la communauté afro-américaine, pendant la
+                première moitié du XXième siècle.
+              </p>
+              <p class="pb-3">
+                Des danses qui, comme le jazz, célèbrent l'expression
+                individuelle et la force des collectifs.
+              </p>
+              <p class="pb-3">
+                Des danses qui invitent à la rencontre{" "}
+                <em>dans la différence.</em>
+              </p>
+              <p class="pb-3">
+                Des danses qui expriment un optimisme et une joie sans
+                naïveté&nbsp;: la joie de la résistance à l'oppression.
+              </p>
+              <p class="pb-3">
+                Des danses populaires; des danses libératrices.
+              </p>
+              <p class="pb-3">
+                Des danses de couples (le charleston, le breakaway, le lindy
+                hop, …); des danses individuelles (le black bottom, le
+                charleston, …)
+              </p>
+              <p class="pb-3">
+                <a
+                  href="/fr/association/lindy-hop"
+                  class="inline-block px-4 py-2 bg-sky-100 text-sky-900 rounded-full hover:bg-sky-200 transition-colors"
+                >
+                  En savoir plus
+                </a>
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 class="pb-3 text-2xl font-bold">Jazz dances ??</h1>
+              <p class="pb-3">
+                Dances born in the African-American community, during the first
+                half of the 20th century.
+              </p>
+              <p class="pb-3">
+                Dances that, like jazz, celebrate individual expression and the
+                strength of collectives.
+              </p>
+              <p class="pb-3">
+                Dances that invite to meet <em>in the difference.</em>
+              </p>
+              <p class="pb-3">
+                Dances that express an optimism and joy without naïveté: the joy
+                of resistance to oppression.
+              </p>
+              <p class="pb-3">Popular dances; liberating dances.</p>
+              <p class="pb-3">
+                Couple dances (the Charleston, the breakaway, the lindy hop, …);
+                individual dances (the black bottom, the charleston, …)
+              </p>
+              <p class="pb-3">
+                <a href="/en/association/lindy-hop">Learn more</a>.
+              </p>
+            </>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</div>
