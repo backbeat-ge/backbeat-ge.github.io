@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Automne 2025 - Lindy hop
 fromDate: 2025-10-28T00:00:00.000Z
 toDate: 2026-02-17T00:00:00.000Z
@@ -9,6 +9,8 @@ placeList:
   - place: src/content/places/ecole-hugo-de-senger.json
 registrationUrl: https://forms.gle/wR7xp4oHnu6QpWEZ8
 ---
+
+> ANNULÉ
 
 ## Lindy Hop
 
